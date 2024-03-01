@@ -92,10 +92,9 @@ function obtenerNombreVelada(ID_Velada, callback) {
 
 // Mostrar tabla de peleas
 function mostrarPeleasTabla(peleas) {
-    var tablaHTML = "<table border='1'><tr><th>ID</th><th>Nombre</th><th>Participante Azul</th><th>Participante Rojo</th><th>Juez</th><th>Árbitro</th><th>Velada</th><th>Acciones</th></tr>";
+    var tablaHTML = "<table border='1'><tr><th>Nombre</th><th>Participante Azul</th><th>Participante Rojo</th><th>Juez</th><th>Árbitro</th><th>Velada</th><th>Acciones</th></tr>";
     peleas.forEach(function(pelea) {
         tablaHTML += "<tr>";
-        tablaHTML += "<td>" + pelea.ID_Pelea + "</td>";
         tablaHTML += "<td>" + pelea.Nombre_Pel + "</td>";
         tablaHTML += "<td>" + pelea.Nombre_Participante_Azul + "</td>";
         tablaHTML += "<td>" + pelea.Nombre_Participante_Rojo + "</td>";

@@ -37,33 +37,44 @@ function login() {
 }
 
 // Función para generar el token
-function generateToken(userID) {
-    // Se genera un token aleatorio para propósitos de demostración
-    const token = Math.random().toString(36).substr(2);
-    const creationDate = new Date();
-    const expirationDate = new Date();
-    expirationDate.setDate(creationDate.getDate() + 2); // El token expira en dos días
+    function generateToken(userID) {
+        const token = Math.random().toString(36).substr(2);
+        const creationDate = new Date();
+        const expirationDate = new Date();
+        expirationDate.setDate(creationDate.getDate() + 2);
+        const formattedCreationDate = creationDate.toString();
+        const formattedExpirationDate = expirationDate.toString();
 
-    // Formatear la fecha en formato ISO
-    const formattedCreationDate = creationDate.toISOString();
-    const formattedExpirationDate = expirationDate.toISOString();
+        var data = {
+            'ID_Usuario': userID,
+            'Token': token,
+            'Fecha_Creacion': formattedCreationDate,
+            'Fecha_Expiracion': formattedExpirationDate
+        };
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/joel/Validacion',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+                console.log('Token generado correctamente:', response);
+            },
+            error: function(error) {
+                console.error('Error al generar el token:', error);
+            },
+            complete: function() {
+                $('#loginButton').prop('disabled', false);
+            }
+        });
+    }
 
-    // Objeto que representa el token
-    const tokenData = {
-        ID_Usuario: userID,
-        Token: token,
-        Fecha_Token: formattedCreationDate,
-        Expiracion_Token: formattedExpirationDate
-    };
-
-    return JSON.stringify(tokenData);
-}
 
 // Función para añadir el token a la API
 function addTokenToAPI(token) {
     // Realizar una solicitud POST a la API para añadir el token
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", `http://127.0.0.1:8000/api/joel/Validacion`, true);
+    xhr.open("GET", `/`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
