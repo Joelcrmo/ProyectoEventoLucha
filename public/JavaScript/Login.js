@@ -24,14 +24,49 @@ function login() {
 }
 
 // Función para generar el token
-function GenerarToken() {
+
+function generarToken() {
 
 }
 
 // Función para añadir el token a la API
 function addTokenToAPI(){
-    
+
 }
 
 // Vincular el evento de clic al botón de inicio de sesión
 $('#loginButton').click(login);
+
+
+/*
+Estructura del login:
+
+login.js=
+    1- login
+    2- logout
+    3- comprobar sesion
+
+Modelo usuario=
+    1- comprobar usuario
+    2- comprobar sesion
+    3- token
+
+Controller usuario=
+    1- validacion login
+    2- cerrarSesion
+    3- lougout
+    4- checksession
+
+    -------------------------------------------------------
+Modelo validacion=
+    Igual
+Controller validacion=
+    crud
+
+web.php=
+    1- login
+    2- logout
+    3- cheksession
+
+
+*/
