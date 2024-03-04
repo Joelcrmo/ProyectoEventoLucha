@@ -23,5 +23,6 @@ class UsuarioController extends Controller
         } else {
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
+
     }
 }
