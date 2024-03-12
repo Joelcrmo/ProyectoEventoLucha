@@ -9,6 +9,7 @@ function login() {
             if (data && data.data.length > 0) {
                 const user = data.data[0];
                 if (user.Nombre_Usu === username && user.Password_Usu === password) {
+                    window.location.href = '/';
                 } else {
                     alert('Usuario o contraseña incorrecta');
                 }
@@ -23,16 +24,6 @@ function login() {
     });
 }
 
-// Función para generar el token
-
-function generarToken() {
-
-}
-
-// Función para añadir el token a la API
-function addTokenToAPI(){
-
-}
 
 // Vincular el evento de clic al botón de inicio de sesión
 $('#loginButton').click(login);
