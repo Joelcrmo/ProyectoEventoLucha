@@ -13,10 +13,6 @@ function MostrarVeladasTabla(veladas) {
     document.getElementById("resultadoVelada").innerHTML = tablaHTML;
 }
 
-function agregarVelada() {
-    window.location.href = "http://127.0.0.1:8000/velada/agregar";
-}
-
 function eliminarVelada(ID_Velada) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada, true);
