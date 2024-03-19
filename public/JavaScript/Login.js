@@ -5,6 +5,7 @@ function login() {
     $.ajax({
         url: 'http://127.0.0.1:8000/api/joel/Usuario',
         type: 'GET',
+        "prueba git",
         success: function(data) {
             if (data && data.data.length > 0) {
                 const user = data.data[0];
