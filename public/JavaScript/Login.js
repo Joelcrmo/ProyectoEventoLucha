@@ -1,4 +1,3 @@
-// Función para realizar la autenticación del usuario
 function login() {
     const username = $('#username').val();
     const password = $('#password').val();
@@ -9,7 +8,8 @@ function login() {
             if (data && data.data.length > 0) {
                 const user = data.data[0];
                 if (user.Nombre_Usu === username && user.Password_Usu === password) {
-                    window.location.href = '/';
+                    // Si el usuario y la contraseña son correctos, llamamos a generate_token con el ID_Usuario
+                    generate_token(user.ID_Usuario);
                 } else {
                     alert('Usuario o contraseña incorrecta');
                 }
@@ -24,40 +24,25 @@ function login() {
     });
 }
 
+function generate_token(ID_Usuario) {
+    // Enviamos una solicitud POST a la ruta de Validacion con el ID_Usuario
+    $.ajax({
+        url: 'http://127.0.0.1:8000/api/joel/Validacion',
+        type: 'POST',
+        data: {
+            ID_Usuario: ID_Usuario // Pasamos el ID_Usuario como parámetro
+        },
+        success: function(response) {
+            const token = response.token;
+            localStorage.setItem('auth_token', token); // Almacenamos el token en el almacenamiento local
+            window.location.href = '/'; // Redireccionamos a la página principal
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al generar el token. Estado:', status, 'Error:', error);
+            alert('Error al generar el token');
+        }
+    });
+}
 
 // Vincular el evento de clic al botón de inicio de sesión
 $('#loginButton').click(login);
-
-
-/*
-Estructura del login:
-
-login.js=
-    1- login
-    2- logout
-    3- comprobar sesion
-
-Modelo usuario=
-    1- comprobar usuario
-    2- comprobar sesion
-    3- token
-
-Controller usuario=
-    1- validacion login
-    2- cerrarSesion
-    3- lougout
-    4- checksession
-
-    -------------------------------------------------------
-Modelo validacion=
-    Igual
-Controller validacion=
-    crud
-
-web.php=
-    1- login
-    2- logout
-    3- cheksession
-
-
-*/

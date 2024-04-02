@@ -44,7 +44,9 @@ Route::group(['prefix' => 'joel'], function () {
 
     Route::post('Pelea', [PeleaController::class, 'store']);
     Route::post('Velada', [VeladaController::class, 'store']);
-    Route::post('Validacion', [ValidacionController::class, 'store']);
+    Route::post('Validacion/{ID_Usuario}', [ValidacionController::class, 'create']);
+
+
 
 
  });

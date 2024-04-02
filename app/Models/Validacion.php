@@ -9,6 +9,7 @@ class Validacion extends Model
 {
 
     protected $table = "Validacion";
+    public $timestamps = false;
 
     protected $primaryKey = "ID_Validacion";
 
