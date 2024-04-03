@@ -20,5 +20,8 @@
       <button type="button" id="loginButton">Iniciar sesión</button>
     </form>
   </div>
+
+  @include('footer')
+
 </body>
 </html>
