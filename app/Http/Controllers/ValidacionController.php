@@ -51,7 +51,6 @@ class ValidacionController extends Controller
             'ID_Usuario' => 'required',
         ]);
 
-        // Aquí pasamos el ID_Usuario como argumento a la función create()
         return $this->create($request->ID_Usuario);
     }
 }

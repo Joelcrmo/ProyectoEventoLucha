@@ -21,7 +21,5 @@
     </form>
   </div>
 
-  @include('footer')
-
 </body>
 </html>

@@ -15,11 +15,7 @@
 
 <h2>Bienvenido</h2>
 
-
-
 </body>
-
-
 @include('footer')
 </html>
 

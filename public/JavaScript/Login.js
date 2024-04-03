@@ -1,3 +1,4 @@
+// Login function
 function login() {
     const username = $('#username').val();
     const password = $('#password').val();
@@ -8,7 +9,6 @@ function login() {
             if (data && data.data.length > 0) {
                 const user = data.data[0];
                 if (user.Nombre_Usu === username && user.Password_Usu === password) {
-                    // Si el usuario y la contraseña son correctos, llamamos a generate_token con el ID_Usuario
                     generate_token(user.ID_Usuario);
                 } else {
                     alert('Usuario o contraseña incorrecta');
@@ -24,18 +24,23 @@ function login() {
     });
 }
 
+// Generate token
 function generate_token(ID_Usuario) {
-    // Enviamos una solicitud POST a la ruta de Validacion con el ID_Usuario
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/joel/Validacion',
+        url: 'http://127.0.0.1:8000/api/joel/Validacion' + '/' + ID_Usuario,
         type: 'POST',
         data: {
-            ID_Usuario: ID_Usuario // Pasamos el ID_Usuario como parámetro
+            ID_Usuario: ID_Usuario
         },
         success: function(response) {
             const token = response.token;
-            localStorage.setItem('auth_token', token); // Almacenamos el token en el almacenamiento local
-            window.location.href = '/'; // Redireccionamos a la página principal
+            userToken = {
+                ID_Usuario: ID_Usuario,
+                token : token
+            };
+            userTokenJSON = JSON.stringify(userToken);
+            sessionStorage.setItem('auth_token', userTokenJSON);
+            window.location.href = '/';
         },
         error: function(xhr, status, error) {
             console.error('Error al generar el token. Estado:', status, 'Error:', error);
@@ -44,5 +49,11 @@ function generate_token(ID_Usuario) {
     });
 }
 
-// Vincular el evento de clic al botón de inicio de sesión
+// Login Button
 $('#loginButton').click(login);
+
+function checkToken() {
+
+}
+
+
