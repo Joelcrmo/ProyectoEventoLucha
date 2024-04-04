@@ -60,30 +60,32 @@ function check_Token(ID_Usuario, token, login_true = null, login_false = null) {
         success: function(response) {
             let tokens = response.data;
 
-            // Recorro todos los tokens que me devuelve la query
-            tokens.forEach(tokenData => {
+            const matchingToken = tokens.find(tokenData => {
+                return tokenData.Token === token && tokenData.ID_Usuario === ID_Usuario;
+            });
 
-                // Si el token es el mismo
-                if (tokenData.token === token && tokenData.ID_Usuario === ID_Usuario) {
-                    // Obtengo la fecha de hoy y las fechas de creacion y expiracion
-                    let currentDate = new Date();
-                    let fechaCreacion = new Date(tokenData.Fecha_creacion);
-                    let fechaExpiracion = new Date(tokenData.Fecha_expiracion);
+            if (matchingToken) {
+                let currentDate = new Date();
+                let fechaCreacion = new Date(matchingToken.Fecha_Token);
+                let fechaExpiracion = new Date(matchingToken.Expiracion_Token);
 
-                    // Compruebo si la fecha de hoy está entre la fecha de creación y la fecha de expiración
-                    if (currentDate >= fechaCreacion && currentDate <= fechaExpiracion) {
-                        if (login_true !== null) {
-                            alert("Sesión iniciada");
-                            window.location.href = login_true;
-                        }
-                    } else {
-                        alert("Su sesión ha expirado");
-                        if (login_false !== null) {
-                            window.location.href = login_false;
-                        }
+                if (currentDate >= fechaCreacion && currentDate <= fechaExpiracion) {
+                    if (login_true !== null) {
+                        alert("Sesión iniciada");
+                        window.location.href = login_true;
+                    }
+                } else {
+                    alert("Su sesión ha expirado");
+                    if (login_false !== null) {
+                        window.location.href = login_false;
                     }
                 }
-            });
+            } else {
+                alert("Token no válido");
+                if (login_false !== null) {
+                    window.location.href = login_false;
+                }
+            }
         },
         error: function(xhr, status, error) {
             console.error('Error al obtener los tokens. Estado:', status, 'Error:', error);
@@ -91,4 +93,6 @@ function check_Token(ID_Usuario, token, login_true = null, login_false = null) {
         }
     });
 }
+
+
 

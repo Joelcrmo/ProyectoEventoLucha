@@ -79,6 +79,7 @@
             window.location.href = "/peleas";
         });
     });
+
 </script>
 
 </body>
