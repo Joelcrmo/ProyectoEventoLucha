@@ -15,7 +15,8 @@
 
 <body onload="obtenerPelea()">
 
-<h2>Peleas</h2>
+<h2 id="title">Peleas</h2>
+
 
 <div id="resultadosPelea"></div>
 

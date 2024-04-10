@@ -15,6 +15,8 @@
 
 <h2>Bienvenido</h2>
 
+<img src="img/index.png" alt="Logo_UFC" id="logo_UFC" >
+
 </body>
 @include('footer')
 </html>

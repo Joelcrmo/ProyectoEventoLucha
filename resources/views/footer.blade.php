@@ -1,6 +1,6 @@
 <footer>
     <div class="container">
-        <p style="color: white">&copy; {{ date('Y') }} Joel Acoran Cruz Morales - Proyecto de Final de Ciclo de Desarrollo de Aplicaciones Web</p>
+        <p style="color: rgb(255, 255, 255)">&copy; {{ date('Y') }} Joel Acoran Cruz Morales - Proyecto de Final de Ciclo de Desarrollo de Aplicaciones Web</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

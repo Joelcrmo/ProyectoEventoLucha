@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-image: url('img/Wallpaper.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center 1%;
     font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
@@ -15,7 +15,7 @@ header {
     align-items: center;
     justify-content: center;
     height: 12vh;
-    background-color: rgba(255, 0, 0, 0.1);
+    background-color: rgba(0, 38, 255, 0.1);
     backdrop-filter: blur(10px);
 }
 
@@ -36,15 +36,12 @@ nav {
 }
 
 /* Estilos para los títulos */
-h1 {
+h1,h2,h3 {
     color: #ffffff;
 }
 
-h2 {
-    color: #ffffff;
-}
-
-h3 {
+/* Estilos para el formulario */
+#formularioPelea, #formularioVelada{
     color: #ffffff;
 }
 
@@ -71,7 +68,7 @@ td {
 }
 
 th {
-    background-color: #d50000;
+    background-color: #0015d5;
     color: white;
 }
 
@@ -100,11 +97,12 @@ a:active {
 
 /* Estilos para el footer */
 footer {
-    margin-top: 25%;
-    background-color: rgba(180, 5, 5, 0.082);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(5, 46, 180, 0.082);
     color: #fff;
-    padding: 1px 0;
-    position: relative;
+    padding: 10px 0;
 }
 
 footer::before {
@@ -119,3 +117,9 @@ footer::before {
     z-index: -5;
 }
 
+
+/* Estilos para la foto */
+#logo_UFC{
+    padding-top: 3%;
+    width: 20%;
+}
