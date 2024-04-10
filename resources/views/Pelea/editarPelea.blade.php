@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('estilos.css') }}">
-    <script src="{{ asset('JavaScript/editarPelea.js') }}"></script>
-    <script src="{{ asset('JavaScript/FuncionesPelea.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Editar Pelea</title>
 </head>
 <body>
@@ -18,6 +17,21 @@
         @method('PUT')
         <label for="nombrePelea">Nombre de la Pelea:</label>
         <input type="text" id="nombrePelea" name="Nombre_Pel" value="{{ $pelea->Nombre_Pel }}"><br><br>
+
+        <label for="selectCategoria">Categoría:</label>
+        <select id="selectCategoria"> <!-- Agregado onchange -->
+            <option value="">Selecciona una categoría</option>
+            <option value="1">Peso Mosca</option>
+            <option value="2">Peso Gallo</option>
+            <option value="3">Peso Pluma</option>
+            <option value="4">Peso Ligero</option>
+            <option value="5">Peso Welter</option>
+            <option value="6">Peso Medio</option>
+            <option value="7">Peso Semipesado</option>
+            <option value="8">Peso Pesado</option>
+            <option value="9">Peso Femenino</option>
+            <option value="10">Peso Flyweight Femenino</option>
+        </select><br><br>
 
         <label for="selectParticipanteAzul">Participante Azul:</label>
         <select id="selectParticipanteAzul" name="ID_Participante_Azul">
@@ -55,9 +69,10 @@
         </select><br><br>
 
         <button type="submit" id="editarPeleaBtn">Editar Pelea</button>
+ <!-- Cambiado el tipo de botón -->
     </form>
 </div>
 @include('footer')
-
+<script src="{{ asset('JavaScript/EditarPelea.js') }}"></script>
 </body>
 </html>

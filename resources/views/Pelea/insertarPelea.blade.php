@@ -23,19 +23,35 @@
         <label for="nombrePelea">Nombre de la Pelea:</label>
         <input type="text" id="nombrePelea" name="Nombre_Pel"><br><br>
 
+        <label for="selectCategoria">Categoría:</label>
+        <select id="selectCategoria">
+            <option value="">Selecciona una categoría</option>
+            <option value="1">Peso Mosca</option>
+            <option value="2">Peso Gallo</option>
+            <option value="3">Peso Pluma</option>
+            <option value="4">Peso Ligero</option>
+            <option value="5">Peso Welter</option>
+            <option value="6">Peso Medio</option>
+            <option value="7">Peso Semipesado</option>
+            <option value="8">Peso Pesado</option>
+            <option value="9">Peso Femenino</option>
+            <option value="10">Peso Flyweight Femenino</option>
+          </select><br><br>
+
         <label for="selectParticipanteAzul">Participante Azul:</label>
         <select id="selectParticipanteAzul" name="ID_Participante_Azul">
-            @foreach($participantesAzules as $participante)
+            @foreach ($participantesAzules as $participante)
                 <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
 
         <label for="selectParticipanteRojo">Participante Rojo:</label>
         <select id="selectParticipanteRojo" name="ID_Participante_Rojo">
-            @foreach($participantesRojos as $participante)
+            @foreach ($participantesRojos as $participante)
                 <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
+
 
         <label for="selectJuez">Juez:</label>
         <select id="selectJuez" name="ID_Juez">
@@ -69,16 +85,21 @@
 <script src="{{ asset('JavaScript/InsertarPelea.js') }}"></script>
 
 <script>
-    $(document).ready(function() {
-        cargarParticipantes();
-        cargarVeladas();
+$(document).ready(function() {
+    cargarVeladas();
+    
 
-        $('#agregarPeleaBtn').click(function() {
-            $(this).prop('disabled', true);
-            agregarPelea();
-            window.location.href = "/peleas";
-        });
+    $('#selectCategoria').change(function() {
+        filtrarParticipantesPorCategoria();
     });
+
+    $('#agregarPeleaBtn').click(function() {
+        $(this).prop('disabled', true);
+        agregarPelea();
+        window.location.href = "/peleas";
+    });
+});
+
 
 </script>
 

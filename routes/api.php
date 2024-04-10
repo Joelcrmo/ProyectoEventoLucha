@@ -13,9 +13,6 @@ use App\Http\Controllers\VeladaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ValidacionController;
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 Route::group(['prefix' => 'joel'], function () {
     Route::apiResource('Rol', RolController::class);
@@ -36,6 +33,10 @@ Route::group(['prefix' => 'joel'], function () {
     Route::get('Localizacion/{ID_Localizacion}', [LocalizacionController::class, 'show']);
     Route::get('Pelea/{ID_Pelea}', [PeleaController::class, 'show']);
     Route::get('Velada/{ID_Velada}', [VeladaController::class, 'show']);
+
+    Route::get('/api/joel/Categoria', [CategoriaController::class, 'index']);
+    Route::get('/api/joel/Categoria/{ID_Categoria}', [CategoriaController::class, 'show']);
+    Route::get('/Categoria/{ID_Categoria}/Participantes', [CategoriaController::class, 'participantesPorCategoria']);
 
     Route::put('Usuario/{ID_Usuario}', [UsuarioController::class, 'show']);
     Route::put('Validacion/{ID_Validacion}', [ValidacionController::class, 'show']);

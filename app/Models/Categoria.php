@@ -14,4 +14,9 @@ class Categoria extends Model
         'ID_Categoria',
         'Nombre_Cat',
     ];
+
+    public function participantes()
+    {
+        return $this->hasMany(Participante::class, 'ID_Categoria', 'ID_Categoria');
+    }
 }

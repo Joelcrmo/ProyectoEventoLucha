@@ -1,24 +1,46 @@
-// Función para cargar los participantes desde la API
-function cargarParticipantes() {
+function filtrarParticipantesPorCategoria() {
+    var selectedCategoryId = $('#selectCategoria').val();
+    var selectParticipanteAzul = $('#selectParticipanteAzul');
+    var selectParticipanteRojo = $('#selectParticipanteRojo');
+
+    selectParticipanteAzul.empty();
+    selectParticipanteRojo.empty();
+
+    if (selectedCategoryId) {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/joel/Categoria/' + selectedCategoryId + '/Participantes',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                $.each(data, function(index, participante) {
+                    selectParticipanteAzul.append(`<option value="${participante.ID_Participante}">${participante.Nombre_Par}</option>`);
+                    selectParticipanteRojo.append(`<option value="${participante.ID_Participante}">${participante.Nombre_Par}</option>`);
+                });
+            },
+            error: function(error) {
+                console.error('Error al cargar participantes por categoría:', error);
+            }
+        });
+    }
+}
+
+function cargarCategorias() {
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/joel/Participante',
+        url: 'http://127.0.0.1:8000/api/joel/Categoria',
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            var selectParticipanteAzul = $('#selectParticipanteAzul');
-            var selectParticipanteRojo = $('#selectParticipanteRojo');
-            $.each(data, function( participante) {
-                selectParticipanteAzul.append(`<option value="${participante.ID_Participante}">${participante.Nombre_Par}</option>`);
-                selectParticipanteRojo.append(`<option value="${participante.ID_Participante}">${participante.Nombre_Par}</option>`);
+            var selectCategoria = $('#selectCategoria');
+            $.each(data.data, function(index, categoria) {
+                selectCategoria.append(`<option value="${categoria.ID_Categoria}">${categoria.Nombre_Cat}</option>`);
             });
         },
         error: function(error) {
-            console.error('Error al cargar participantes:', error);
+            console.error('Error al cargar categorías:', error);
         }
     });
 }
 
-// Función para cargar las veladas desde la API
 function cargarVeladas() {
     $.ajax({
         url: 'http://127.0.0.1:8000/api/joel/Velada',
@@ -26,7 +48,7 @@ function cargarVeladas() {
         dataType: 'json',
         success: function(data) {
             var selectVelada = $('#selectVelada');
-            $.each(data, function( velada) {
+            $.each(data, function(index, velada) {
                 selectVelada.append(`<option value="${velada.ID_Velada}">${velada.Nombre_Vel}</option>`);
             });
         },
@@ -36,7 +58,6 @@ function cargarVeladas() {
     });
 }
 
-// Función para agregar una pelea utilizando la API
 function agregarPelea() {
     var nombrePelea = $('#nombrePelea').val();
     var participanteAzul = $('#selectParticipanteAzul').val();

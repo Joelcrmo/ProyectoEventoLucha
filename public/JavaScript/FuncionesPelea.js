@@ -15,42 +15,65 @@ function obtenerPelea() {
     xhr.send();
 }
 
-
-// Obtener nombres correspondientes a los IDs
 function obtenerNombres(peleas) {
-    // Variable para mantener el índice actual
-    let index = 0;
-    // Función para manejar las solicitudes de nombres de manera secuencial
-    function obtenerNombresSecuencialmente() {
-        if (index < peleas.length) {
-            const pelea = peleas[index];
-            obtenerNombreParticipante(pelea.ID_Participante_Azul, function(nombreAzul) {
-                pelea.Nombre_Participante_Azul = nombreAzul;
-                obtenerNombreParticipante(pelea.ID_Participante_Rojo, function(nombreRojo) {
-                    pelea.Nombre_Participante_Rojo = nombreRojo;
-                    obtenerNombreParticipante(pelea.ID_Juez, function(nombreJuez) {
-                        pelea.Nombre_Juez = nombreJuez;
-                        obtenerNombreParticipante(pelea.ID_Arbitro, function(nombreArbitro) {
-                            pelea.Nombre_Arbitro = nombreArbitro;
-                            obtenerNombreVelada(pelea.ID_Velada, function(nombreVelada) {
-                                pelea.Nombre_Velada = nombreVelada;
-                                // Avanzar al siguiente índice y llamar recursivamente a la función
-                                index++;
-                                obtenerNombresSecuencialmente();
-                            });
+    // Función para obtener el nombre de un participante por su ID
+    function obtenerNombreParticipante(ID_Participante, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://127.0.0.1:8000/api/joel/Participante/" + ID_Participante, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    callback(response.Nombre_Par);
+                } else {
+                    console.error("Error al obtener el nombre del participante. Código de estado:", xhr.status);
+                    callback("Error al obtener el nombre");
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Función para obtener el nombre de la velada por su ID
+    function obtenerNombreVelada(ID_Velada, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    callback(response.Nombre_Vel);
+                } else {
+                    console.error("Error al obtener el nombre de la velada. Código de estado:", xhr.status);
+                    callback("Error al obtener el nombre");
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Iterar sobre cada pelea y obtener nombres
+    peleas.forEach(function(pelea) {
+        obtenerNombreParticipante(pelea.ID_Participante_Azul, function(nombreAzul) {
+            pelea.Nombre_Participante_Azul = nombreAzul;
+            obtenerNombreParticipante(pelea.ID_Participante_Rojo, function(nombreRojo) {
+                pelea.Nombre_Participante_Rojo = nombreRojo;
+                obtenerNombreParticipante(pelea.ID_Juez, function(nombreJuez) {
+                    pelea.Nombre_Juez = nombreJuez;
+                    obtenerNombreParticipante(pelea.ID_Arbitro, function(nombreArbitro) {
+                        pelea.Nombre_Arbitro = nombreArbitro;
+                        obtenerNombreVelada(pelea.ID_Velada, function(nombreVelada) {
+                            pelea.Nombre_Velada = nombreVelada;
+                            // Una vez que se obtengan todos los nombres, mostrar la tabla
+                            mostrarPeleasTabla(peleas);
                         });
                     });
                 });
             });
-        } else {
-            // Cuando se procesen todas las peleas, mostrar la tabla
-            mostrarPeleasTabla(peleas);
-        }
-    }
-
-    // Iniciar el proceso
-    obtenerNombresSecuencialmente();
+        });
+    });
 }
+
 
 // Obtener nombre del participante por ID
 function obtenerNombreParticipante(ID_Participante, callback) {
