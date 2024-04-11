@@ -41,7 +41,7 @@ function guardarCambiosVelada(ID_Velada) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 console.log('Velada actualizada:', xhr.responseText);
-                window.location.href = "/velada"; // Redirigir a la página de veladas después de la edición
+                window.location.href = "/velada";
             } else {
                 console.error("Error al guardar los cambios de la velada. Código de estado:", xhr.status);
             }

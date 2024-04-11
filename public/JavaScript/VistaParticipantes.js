@@ -40,6 +40,7 @@ function MostrarLuchadoresTabla(datos) {
     }
 }
 
+// Mostrar tablas de arbitros y jueces
 function MostrarArbitrosJuecesTabla(datos) {
     if (datos.hasOwnProperty("data")) {
         var participantes = datos.data;
@@ -59,7 +60,7 @@ function MostrarArbitrosJuecesTabla(datos) {
     }
 }
 
-// Filtros
+// Filtros por categorias
 function filtrarPorCategoria() {
     var selectElement = document.getElementById("selectCategoria");
     var selectedCategoryId = selectElement.value;
@@ -87,6 +88,7 @@ function filtrarPorCategoria() {
     }
 }
 
+// Filtros por arbitros y jueces
 function filtrarArbitrosYJueces() {
     var resultadosDiv = document.getElementById("resultadosParticipante");
 
@@ -105,6 +107,7 @@ function filtrarArbitrosYJueces() {
     }
 }
 
+// Filtros por tecnica
 function filtrarPorTecnica() {
     var selectElement = document.getElementById("selectTecnica");
     var selectedTecnicaId = selectElement.value;

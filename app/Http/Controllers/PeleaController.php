@@ -70,8 +70,10 @@ class PeleaController extends Controller
             'ID_Velada' => 'required',
         ]);
 
+        // Llama al método actualizarPelea del PeleaDBController
         return $this->peleaDBController->actualizarPelea($request, $ID_Pelea);
     }
+
 
     public function edit($ID_Pelea)
     {

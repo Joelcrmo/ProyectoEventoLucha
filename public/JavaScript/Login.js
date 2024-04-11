@@ -1,4 +1,4 @@
-// Login function
+// Función para realizar la autenticación
 function login() {
     const username = $('#username').val();
     const password = $('#password').val();
@@ -24,7 +24,7 @@ function login() {
     });
 }
 
-// Generate token
+// Función para generar el token
 function generate_token(ID_Usuario) {
     $.ajax({
         url: 'http://127.0.0.1:8000/api/joel/Validacion' + '/' + ID_Usuario,
@@ -49,9 +49,10 @@ function generate_token(ID_Usuario) {
     });
 }
 
-// Login Button
+// Boton del login
 $('#loginButton').click(login);
 
+// Función para validar el token
 function check_Token(ID_Usuario, token, login_true = null, login_false = null) {
     const url = 'http://127.0.0.1:8000/api/joel/Validacion';
     $.ajax({

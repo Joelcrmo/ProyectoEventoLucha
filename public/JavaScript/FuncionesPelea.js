@@ -15,6 +15,7 @@ function obtenerPelea() {
     xhr.send();
 }
 
+// Obtener nombres para la pelea
 function obtenerNombres(peleas) {
     // Función para obtener el nombre de un participante por su ID
     function obtenerNombreParticipante(ID_Participante, callback) {
@@ -74,7 +75,6 @@ function obtenerNombres(peleas) {
     });
 }
 
-
 // Obtener nombre del participante por ID
 function obtenerNombreParticipante(ID_Participante, callback) {
     var xhr = new XMLHttpRequest();
@@ -93,7 +93,6 @@ function obtenerNombreParticipante(ID_Participante, callback) {
     xhr.send();
 }
 
-
 // Obtener nombre de la velada por ID
 function obtenerNombreVelada(ID_Velada, callback) {
     var xhr = new XMLHttpRequest();
@@ -111,7 +110,6 @@ function obtenerNombreVelada(ID_Velada, callback) {
     };
     xhr.send();
 }
-
 
 // Mostrar tabla de peleas
 function mostrarPeleasTabla(peleas) {
@@ -132,10 +130,6 @@ function mostrarPeleasTabla(peleas) {
     document.getElementById("resultadosPelea").innerHTML = tablaHTML;
 }
 
-
-
-
-
 // Función para eliminar una pelea
 function eliminarPelea(ID_Pelea) {
     var xhr = new XMLHttpRequest();
@@ -143,18 +137,17 @@ function eliminarPelea(ID_Pelea) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200 || xhr.status === 204) {
-                // Eliminación exitosa, podrías actualizar la interfaz de usuario aquí si es necesario
                 console.log("La pelea con ID " + ID_Pelea + " ha sido eliminada exitosamente.");
                 window.location.href = "/peleas";
                 } else {
                 console.error("Error al eliminar la pelea. Código de estado:", xhr.status);
-                // Manejar el error según sea necesario
             }
         }
     };
     xhr.send();
 }
 
+// Función para editar una pelea
 function editarPelea(ID_Pelea, event) {
     // Evitar que el formulario se envíe automáticamente
     event.preventDefault();
@@ -163,7 +156,7 @@ function editarPelea(ID_Pelea, event) {
     var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("PUT", "http://127.0.0.1:8000/api/joel/Pelea/" + ID_Pelea, true); // Cambiado a PUT
+    xhr.open("PUT", "http://127.0.0.1:8000/api/joel/Pelea/" + ID_Pelea, true);
     xhr.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').content);
 
     xhr.onreadystatechange = function() {

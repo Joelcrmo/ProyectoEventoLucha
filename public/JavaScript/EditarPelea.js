@@ -1,36 +1,28 @@
 $(document).ready(function() {
-    // Función para cargar las veladas al cargar la página
-    cargarVeladas();
-
-    // Función para filtrar los participantes por categoría al cambiar la categoría seleccionada
     $('#selectCategoria').change(function() {
+        console.log('Evento change activado');
         filtrarParticipantesPorCategoria();
     });
-
-    // Función para cargar los datos de la pelea a editar
     cargarDatosPelea();
-
-    $('#editarPeleaBtn').click(function() {
-        guardarCambios();
-    });
-    // Evento click para enviar los datos actualizados al servidor
     $('#editarPeleaBtn').click(function() {
         $(this).prop('disabled', true);
+        guardarCambios();
         editarPelea();
     });
 });
 
 // Función para cargar los datos de la pelea a editar
 function cargarDatosPelea() {
-    var peleaId = obtenerParametroURL('id'); // Obtener el ID de la pelea de la URL
+    console.log("Cargando datos de la pelea...");
+    var peleaId = obtenerParametroURL('id');
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/joel/Pelea/' + peleaId, // URL para obtener los datos de la pelea
+        url: 'http://127.0.0.1:8000/api/joel/Pelea/' + peleaId,
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            // Rellenar los campos del formulario con los datos de la pelea obtenidos
             $('#nombrePelea').val(data.Nombre_Pel);
-            $('#selectCategoria').val(data.ID_Categoria).change(); // Seleccionar la categoría y desencadenar el evento change para filtrar los participantes
+            $('#selectCategoria').val(data.ID_Categoria);
+            $('#selectCategoria').trigger('change');
             $('#selectParticipanteAzul').val(data.ID_Participante_Azul);
             $('#selectParticipanteRojo').val(data.ID_Participante_Rojo);
             $('#selectJuez').val(data.ID_Juez);
@@ -45,7 +37,7 @@ function cargarDatosPelea() {
 
 // Función para enviar los datos actualizados de la pelea al servidor
 function editarPelea() {
-    var peleaId = obtenerParametroURL('id'); // Obtener el ID de la pelea de la URL
+    var peleaId = obtenerParametroURL('id');
     var nombrePelea = $('#nombrePelea').val();
     var participanteAzul = $('#selectParticipanteAzul').val();
     var participanteRojo = $('#selectParticipanteRojo').val();
@@ -63,7 +55,7 @@ function editarPelea() {
     };
 
     $.ajax({
-        url: 'http://127.0.0.1:8000/api/joel/Pelea/' + peleaId, // URL para editar la pelea
+        url: 'http://127.0.0.1:8000/api/joel/Pelea/' + peleaId,
         type: 'PUT',
         dataType: 'json',
         contentType: 'application/json',
@@ -80,13 +72,6 @@ function editarPelea() {
         }
     });
 }
-
-// Función para obtener un parámetro de la URL por su nombre
-function obtenerParametroURL(nombre) {
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(nombre);
-}
-
 
 // Función para enviar los cambios de la pelea al servidor para su edición
 function guardarCambiosPelea(ID_Pelea) {
@@ -120,4 +105,44 @@ function guardarCambiosPelea(ID_Pelea) {
         }
     };
     xhr.send(JSON.stringify(data));
+}
+
+function filtrarParticipantesPorCategoria() {
+    console.log('Filtrando participantes por categoría...');
+    var selectedCategoryId = $('#selectCategoria').val();
+    var selectParticipanteAzul = $('#selectParticipanteAzul');
+    var selectParticipanteRojo = $('#selectParticipanteRojo');
+
+    // Limpiar selectores de participantes
+    selectParticipanteAzul.empty().append($('<option>', {
+        value: '',
+        text: 'Selecciona un participante'
+    }));
+    selectParticipanteRojo.empty().append($('<option>', {
+        value: '',
+        text: 'Selecciona un participante'
+    }));
+
+    if (selectedCategoryId) {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/joel/Categoria/' + selectedCategoryId + '/Participantes',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                data.forEach(function(participante) {
+                    selectParticipanteAzul.append($('<option>', {
+                        value: participante.ID_Participante,
+                        text: participante.Nombre_Par
+                    }));
+                    selectParticipanteRojo.append($('<option>', {
+                        value: participante.ID_Participante,
+                        text: participante.Nombre_Par
+                    }));
+                });
+            },
+            error: function(error) {
+                console.error('Error al cargar participantes por categoría:', error);
+            }
+        });
+    }
 }

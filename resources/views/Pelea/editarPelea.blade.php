@@ -69,7 +69,6 @@
         </select><br><br>
 
         <button type="submit" id="editarPeleaBtn">Editar Pelea</button>
- <!-- Cambiado el tipo de botón -->
     </form>
 </div>
 @include('footer')

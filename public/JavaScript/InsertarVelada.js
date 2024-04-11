@@ -16,7 +16,6 @@ function cargarLocalizaciones() {
     });
 }
 
-
 // Función para agregar una velada
 function agregarVelada() {
     var nombreVelada = $('#nombreVelada').val();

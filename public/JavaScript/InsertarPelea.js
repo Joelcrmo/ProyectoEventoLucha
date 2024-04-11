@@ -1,3 +1,4 @@
+// Función para filtrar participantes por categoría
 function filtrarParticipantesPorCategoria() {
     var selectedCategoryId = $('#selectCategoria').val();
     var selectParticipanteAzul = $('#selectParticipanteAzul');
@@ -24,6 +25,7 @@ function filtrarParticipantesPorCategoria() {
     }
 }
 
+// Cargar categorías
 function cargarCategorias() {
     $.ajax({
         url: 'http://127.0.0.1:8000/api/joel/Categoria',
@@ -41,6 +43,7 @@ function cargarCategorias() {
     });
 }
 
+// Cargar veladas
 function cargarVeladas() {
     $.ajax({
         url: 'http://127.0.0.1:8000/api/joel/Velada',
@@ -58,6 +61,7 @@ function cargarVeladas() {
     });
 }
 
+// Función para agregar una pelea
 function agregarPelea() {
     var nombrePelea = $('#nombrePelea').val();
     var participanteAzul = $('#selectParticipanteAzul').val();

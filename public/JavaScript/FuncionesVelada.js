@@ -1,18 +1,20 @@
+// Función para mostrar las veladas
 function MostrarVeladasTabla(veladas) {
     var tablaHTML = "<table border='1'><tr><th>Nombre</th><th>Fecha</th><th>Localización</th><th>Acciones</th></tr>";
     veladas.forEach(function(velada) {
         tablaHTML += "<tr>";
         tablaHTML += "<td>" + velada.Nombre_Vel + "</td>";
         tablaHTML += "<td>" + velada.Fecha_Vel + "</td>";
-        tablaHTML += "<td>" + velada.Nombre_Loc + "</td>"; // Corregir aquí para acceder al nombre de la Localización
+        tablaHTML += "<td>" + velada.Nombre_Loc + "</td>";
         tablaHTML += "<td><button onclick='eliminarVelada(" + velada.ID_Velada + ")'>Eliminar</button>";
-        tablaHTML += "<button onclick='editarVelada(" + velada.ID_Velada + ")'>Editar</button></td>"; // Nuevo botón de Editar
+        tablaHTML += "<button onclick='editarVelada(" + velada.ID_Velada + ")'>Editar</button></td>";
         tablaHTML += "</tr>";
     });
     tablaHTML += "</table>";
     document.getElementById("resultadoVelada").innerHTML = tablaHTML;
 }
 
+// Función para eliminar una velada
 function eliminarVelada(ID_Velada) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada, true);
@@ -28,10 +30,12 @@ function eliminarVelada(ID_Velada) {
     xhr.send();
 }
 
+// Función para editar una velada
 function editarVelada(ID_Velada) {
     window.location.href = "http://127.0.0.1:8000/velada/editar/" + ID_Velada; // Redireccionar a la página de edición
 }
 
+// Función para obtener todas las veladas
 function obtenerVelada() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1:8000/api/joel/Velada", true);
