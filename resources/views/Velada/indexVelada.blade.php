@@ -18,6 +18,8 @@
 
 <div id="resultadoVelada"></div>
 
+<div id="PeleasVeladas"></div>
+
 <a href="{{ route('velada/insertar') }}">Insertar Velada</a>
 
 </body>

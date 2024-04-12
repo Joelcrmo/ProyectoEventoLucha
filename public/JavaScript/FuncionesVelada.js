@@ -7,11 +7,39 @@ function MostrarVeladasTabla(veladas) {
         tablaHTML += "<td>" + velada.Fecha_Vel + "</td>";
         tablaHTML += "<td>" + velada.Nombre_Loc + "</td>";
         tablaHTML += "<td><button onclick='eliminarVelada(" + velada.ID_Velada + ")'>Eliminar</button>";
-        tablaHTML += "<button onclick='editarVelada(" + velada.ID_Velada + ")'>Editar</button></td>";
+        tablaHTML += "<button onclick='editarVelada(" + velada.ID_Velada + ")'>Editar</button>";
+        tablaHTML += "<button onclick='verPeleasVelada(" + velada.ID_Velada + ")'>Ver Peleas</button></td>";
         tablaHTML += "</tr>";
     });
     tablaHTML += "</table>";
     document.getElementById("resultadoVelada").innerHTML = tablaHTML;
+}
+
+// Función para mostrar las peleas de una velada específica
+function verPeleasVelada(ID_Velada) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada + "/peleas", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var peleas = JSON.parse(xhr.responseText);
+                MostrarPeleasVelada(peleas);
+            } else {
+                console.error("Error al obtener las peleas de la velada. Código de estado:", xhr.status);
+            }
+        }
+    };
+    xhr.send();
+}
+
+// Función para mostrar las peleas de una velada en el elemento PeleasVeladas
+function MostrarPeleasVelada(peleas) {
+    var peleasHTML = "<h3>Peleas de la Velada</h3><ul>";
+    peleas.forEach(function(pelea) {
+        peleasHTML += "<li>" + pelea.Nombre_Pelea + " - " + pelea.Categoria_Pelea + "</li>";
+    });
+    peleasHTML += "</ul>";
+    document.getElementById("PeleasVeladas").innerHTML = peleasHTML;
 }
 
 // Función para eliminar una velada
