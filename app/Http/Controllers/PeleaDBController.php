@@ -79,5 +79,17 @@ class PeleaDBController extends Controller
         return view('Pelea.editarPelea', compact('pelea', 'participantesAzules', 'participantesRojos', 'jueces', 'arbitros', 'veladas'));
     }
 
+    public function obtenerPeleasPorVelada($ID_Velada)
+    {
+        // Obtener todas las peleas con sus relaciones para una velada específica
+        $peleas = DB::table('Pelea')
+                    ->leftJoin('Velada', 'Pelea.ID_Velada', '=', 'Velada.ID_Velada')
+                    ->select('Pelea.*', 'Velada.Nombre_Vel')
+                    ->where('Pelea.ID_Velada', $ID_Velada)
+                    ->get();
+
+        return response()->json($peleas);
+    }
+
 
 }

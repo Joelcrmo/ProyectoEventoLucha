@@ -19,10 +19,17 @@ class PeleaController extends Controller
         $this->peleaDBController = $peleaDBController;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $ID_Velada = $request->query('ID_Velada');
+
+        if ($ID_Velada) {
+            return $this->peleaDBController->obtenerPeleasPorVelada($ID_Velada);
+        }
+
         return $this->peleaDBController->obtenerPeleas();
     }
+
 
     public function show($ID_Pelea)
     {

@@ -69,9 +69,7 @@
 
         <label for="selectVelada">Velada:</label>
         <select id="selectVelada" name="ID_Velada">
-            @foreach($veladas as $velada)
-                <option value="{{ $velada->ID_Velada }}">{{ $velada->Nombre_Vel }}</option>
-            @endforeach
+            <option value="">Selecciona una velada</option>
         </select><br><br>
 
         <button type="submit" id="agregarPeleaBtn">Agregar Pelea</button>
@@ -87,7 +85,7 @@
 <script>
 $(document).ready(function() {
     cargarVeladas();
-    
+
 
     $('#selectCategoria').change(function() {
         filtrarParticipantesPorCategoria();
