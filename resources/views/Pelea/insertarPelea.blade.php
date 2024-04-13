@@ -86,11 +86,11 @@
     $(document).ready(function() {
         cargarVeladas();
 
-        $('#selectCategoria').change(function() {
+        $('#select-Categoria').change(function() {
             filtrarParticipantesPorCategoria();
         });
 
-        $('#agregarPeleaBtn').click(function() {
+        $('#agregar-Pelea-Btn').click(function() {
             $(this).prop('disabled', true);
             agregarPelea();
             window.location.href = "/peleas";

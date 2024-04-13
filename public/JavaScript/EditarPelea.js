@@ -1,10 +1,10 @@
 $(document).ready(function() {
-    $('#selectCategoria').change(function() {
+    $('#select-Categoria').change(function() {
         console.log('Evento change activado');
         filtrarParticipantesPorCategoria();
     });
     cargarDatosPelea();
-    $('#editarPeleaBtn').click(function() {
+    $('#editar-Pelea-Btn').click(function() {
         $(this).prop('disabled', true);
         guardarCambios();
         editarPelea();
@@ -109,9 +109,9 @@ function guardarCambiosPelea(ID_Pelea) {
 
 function filtrarParticipantesPorCategoria() {
     console.log('Filtrando participantes por categoría...');
-    var selectedCategoryId = $('#selectCategoria').val();
-    var selectParticipanteAzul = $('#selectParticipanteAzul');
-    var selectParticipanteRojo = $('#selectParticipanteRojo');
+    var selectedCategoryId = $('#select-Categoria').val();
+    var selectParticipanteAzul = $('#select-Participante-Azul');
+    var selectParticipanteRojo = $('#select-Participante-Rojo');
 
     // Limpiar selectores de participantes
     selectParticipanteAzul.empty().append($('<option>', {
@@ -146,3 +146,4 @@ function filtrarParticipantesPorCategoria() {
         });
     }
 }
+
