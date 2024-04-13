@@ -31,7 +31,8 @@ class VeladaDBController extends Controller
         $idLocalizacion = $request->input('ID_Localizacion');
         $fechaVel = $request->input('Fecha_Vel');
 
-        DB::insert('INSERT INTO Velada (Nombre_Vel, ID_Localizacion, Fecha_Vel) VALUES (?, ?, ?)', [$nombreVel, $idLocalizacion, $fechaVel]);
+        DB::insert('INSERT INTO Velada (Nombre_Vel, ID_Localizacion, Fecha_Vel) VALUES (?, ?, ?)',
+        [$nombreVel, $idLocalizacion, $fechaVel]);
 
         return redirect('/velada');
     }

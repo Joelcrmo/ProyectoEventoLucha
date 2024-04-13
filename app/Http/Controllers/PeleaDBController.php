@@ -36,7 +36,8 @@ class PeleaDBController extends Controller
         $idArbitro = $request->input('ID_Arbitro');
         $idVelada = $request->input('ID_Velada');
 
-        DB::insert('INSERT INTO Pelea (Nombre_Pel, ID_Participante_Azul, ID_Participante_Rojo, ID_Juez, ID_Arbitro, ID_Velada) VALUES (?, ?, ?, ?, ?, ?)', [$nombrePel, $idParticipanteAzul, $idParticipanteRojo, $idJuez, $idArbitro, $idVelada]);
+        DB::insert('INSERT INTO Pelea (Nombre_Pel, ID_Participante_Azul, ID_Participante_Rojo, ID_Juez, ID_Arbitro, ID_Velada)
+        VALUES (?, ?, ?, ?, ?, ?)',[$nombrePel, $idParticipanteAzul, $idParticipanteRojo, $idJuez, $idArbitro, $idVelada]);
 
         return redirect('/peleas');
     }
