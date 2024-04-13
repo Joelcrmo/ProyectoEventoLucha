@@ -14,7 +14,7 @@
 <h2>Añadir Velada</h2>
 
 <div id="formulario-Velada">
-    <form action="{{ route('velada/insertar') }}" method="POST">
+    <form action="{{ route('velada/insertar') }}" method="POST" class="metodo-post">
         @csrf
         <label for="nombre-Velada">Nombre de la Velada:</label>
         <input type="text" id="nombre-Velada" name="Nombre_Vel"><br><br>
