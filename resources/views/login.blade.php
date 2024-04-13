@@ -25,6 +25,8 @@
 
 <footer>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Ruta del Script para realizar el login -->
   <script src="JavaScript/Login.js"></script>
   <!-- Script para verificar el token de autenticación -->
   <script>
