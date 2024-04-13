@@ -14,17 +14,17 @@
 <h2>Editar Velada</h2>
 
 <div id="formulario-Velada">
-    <form action="{{ route('velada.update', ['ID_Velada' => $velada->ID_Velada]) }}" method="POST">
+    <form action="{{ route('velada.update', ['ID_Velada' => $velada->ID_Velada]) }}" method="POST" onsubmit="return validarFormulario()">
         @csrf
         @method('PUT')
         <label for="nombre-Velada">Nombre de la Velada:</label>
-        <input type="text" id="nombre-Velada" name="Nombre_Vel" value="{{ $velada->Nombre_Vel }}"><br><br>
+        <input type="text" id="nombre-Velada" name="Nombre_Vel" value="{{ $velada->Nombre_Vel }}" required><br><br>
 
         <label for="fecha-Velada">Fecha de la Velada:</label>
-        <input type="date" id="fecha-Velada" name="Fecha_Vel" value="{{ $velada->Fecha_Vel }}"><br><br>
+        <input type="date" id="fecha-Velada" name="Fecha_Vel" value="{{ $velada->Fecha_Vel }}" required><br><br>
 
         <label for="select-Localizacion">Localización:</label>
-        <select id="select-Localizacion" name="ID_Localizacion">
+        <select id="select-Localizacion" name="ID_Localizacion" required>
             @foreach ($localizaciones as $localizacion)
                 <option value="{{ $localizacion->ID_Localizacion }}"
                     {{ $localizacion->ID_Localizacion == $velada->ID_Localizacion ? 'selected' : '' }}>
@@ -36,5 +36,19 @@
     </form>
 </div>
 @include('footer')
+
+<script>
+    function validarFormulario() {
+        var nombreVelada = document.getElementById("nombre-Velada").value;
+        var fechaVelada = document.getElementById("fecha-Velada").value;
+
+        if (nombreVelada === "" || fechaVelada === "") {
+            alert("Por favor, complete todos los campos requeridos.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
 </body>
 </html>

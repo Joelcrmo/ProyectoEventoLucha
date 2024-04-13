@@ -28,6 +28,11 @@ function guardarCambiosVelada(ID_Velada) {
     var fechaVelada = document.getElementById("fecha-Velada").value;
     var localizacion = document.getElementById("select-Localizacion").value;
 
+    if (!nombrePelea.match(/^[a-zA-Z0-9\s]{4,25}$/)) {
+        alert('El nombre de la velada debe tener entre 4 y 25 caracteres alfanuméricos sin caracteres especiales.');
+        return;
+    }
+
     var data = {
         'Nombre_Vel': nombreVelada,
         'ID_Localizacion': localizacion,

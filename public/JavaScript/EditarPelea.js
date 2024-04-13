@@ -35,44 +35,6 @@ function cargarDatosPelea() {
     });
 }
 
-// Función para enviar los datos actualizados de la pelea al servidor
-function editarPelea() {
-    var peleaId = obtenerParametroURL('id');
-    var nombrePelea = $('#nombrePelea').val();
-    var participanteAzul = $('#selectParticipanteAzul').val();
-    var participanteRojo = $('#selectParticipanteRojo').val();
-    var juez = $('#selectJuez').val();
-    var arbitro = $('#selectArbitro').val();
-    var velada = $('#selectVelada').val();
-
-    var data = {
-        'Nombre_Pel': nombrePelea,
-        'ID_Participante_Azul': participanteAzul,
-        'ID_Participante_Rojo': participanteRojo,
-        'ID_Juez': juez,
-        'ID_Arbitro': arbitro,
-        'ID_Velada': velada
-    };
-
-    $.ajax({
-        url: 'http://127.0.0.1:8000/api/joel/Pelea/' + peleaId,
-        type: 'PUT',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        success: function(response) {
-            console.log('Pelea editada:', response);
-            $('#resultadosPelea').text('Pelea editada correctamente');
-            window.location.href = "/peleas";
-        },
-        error: function(error) {
-            console.error('Error al editar pelea:', error);
-            $('#resultadosPelea').text('Error al editar pelea');
-            $('#editarPeleaBtn').prop('disabled', false);
-        }
-    });
-}
-
 // Función para enviar los cambios de la pelea al servidor para su edición
 function guardarCambiosPelea(ID_Pelea) {
     var nombrePelea = document.getElementById("nombre-Pelea").value;
@@ -82,6 +44,10 @@ function guardarCambiosPelea(ID_Pelea) {
     var arbitro = document.getElementById("select-Arbitro").value;
     var velada = document.getElementById("select-Velada").value;
 
+    if (!nombrePelea.match(/^[a-zA-Z0-9\s]{4,25}$/)) {
+        $('#resultadosPelea').text('El nombre de la pelea debe tener entre 4 y 25 caracteres alfanuméricos sin caracteres especiales.');
+        return;
+    }
     var data = {
         'Nombre_Pel': nombrePelea,
         'ID_Participante_Azul': participanteAzul,

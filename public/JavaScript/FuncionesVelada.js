@@ -23,7 +23,11 @@ function verPeleasVelada(ID_Velada) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var peleas = JSON.parse(xhr.responseText);
-                MostrarPeleasVelada(peleas);
+                if (peleas.length === 0) {
+                    alert("No hay peleas en esta velada");
+                } else {
+                    MostrarPeleasVelada(peleas);
+                }
             } else {
                 console.error("Error al obtener las peleas de la velada. Código de estado:", xhr.status);
             }

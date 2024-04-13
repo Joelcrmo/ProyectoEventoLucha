@@ -14,16 +14,16 @@
 <h2>Añadir Velada</h2>
 
 <div id="formulario-Velada">
-    <form action="{{ route('velada/insertar') }}" method="POST" class="metodo-post">
+    <form action="{{ route('velada/insertar') }}" method="POST" class="metodo-post" onsubmit="return validarFormulario()">
         @csrf
         <label for="nombre-Velada">Nombre de la Velada:</label>
-        <input type="text" id="nombre-Velada" name="Nombre_Vel"><br><br>
+        <input type="text" id="nombre-Velada" name="Nombre_Vel" required><br><br>
 
         <label for="fecha-Velada">Fecha de la Velada:</label>
-        <input type="date" id="fecha-Velada" name="Fecha_Vel"><br><br>
+        <input type="date" id="fecha-Velada" name="Fecha_Vel" required><br><br>
 
         <label for="select-Localizacion">Localización:</label>
-        <select id="select-Localizacion" name="ID_Localizacion">
+        <select id="select-Localizacion" name="ID_Localizacion" required>
             @foreach ($localizaciones as $localizacion)
                 <option value="{{ $localizacion->ID_Localizacion }}">{{ $localizacion->Nombre_Loc }}</option>
             @endforeach
@@ -36,6 +36,19 @@
 <div id="resultadosVelada"></div>
 
 @include('footer')
+
+<script>
+    function validarFormulario() {
+        var nombreVelada = document.getElementById("nombre-Velada").value;
+        var fechaVelada = document.getElementById("fecha-Velada").value;
+
+        if (nombreVelada === "" || fechaVelada === "") {
+            alert("Por favor, complete todos los campos requeridos.");
+            return false; // Evita que se envíe el formulario si los campos están vacíos
+        }
+        return true;
+    }
+</script>
 
 </body>
 </html>

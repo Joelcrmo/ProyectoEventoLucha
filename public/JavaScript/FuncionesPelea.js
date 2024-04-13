@@ -6,7 +6,11 @@ function obtenerPelea() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                obtenerNombres(response);
+                if (response.length === 0) {
+                    mostrarMensajeNoPeleas();
+                } else {
+                    obtenerNombres(response);
+                }
             } else {
                 console.error("Error al obtener los datos de la pelea. Código de estado:", xhr.status);
             }
@@ -14,6 +18,14 @@ function obtenerPelea() {
     };
     xhr.send();
 }
+
+// Mostrar mensaje cuando no hay peleas disponibles
+function mostrarMensajeNoPeleas() {
+    var mensaje = "<p style='color: white;'>No hay peleas disponibles.</p>";
+    document.getElementById("resultados-Pelea").innerHTML = mensaje;
+}
+
+
 
 // Obtener nombres para la pelea
 function obtenerNombres(peleas) {
@@ -139,7 +151,7 @@ function eliminarPelea(ID_Pelea) {
             if (xhr.status === 200 || xhr.status === 204) {
                 console.log("La pelea con ID " + ID_Pelea + " ha sido eliminada exitosamente.");
                 window.location.href = "/peleas";
-            } else {
+                } else {
                 console.error("Error al eliminar la pelea. Código de estado:", xhr.status);
             }
         }

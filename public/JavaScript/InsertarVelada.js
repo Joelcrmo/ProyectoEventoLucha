@@ -22,6 +22,10 @@ function agregarVelada() {
     var fechaVelada = $('#fechaVelada').val();
     var localizacion = $('#selectLocalizacion').val();
 
+    if (!nombrePelea.match(/^[a-zA-Z0-9\s]{4,25}$/)) {
+        alert('El nombre de la velada debe tener entre 4 y 25 caracteres alfanuméricos sin caracteres especiales.');
+        return;
+    }
     var data = {
         'Nombre_Vel': nombreVelada,
         'ID_Localizacion': localizacion,
