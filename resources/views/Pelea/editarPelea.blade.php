@@ -11,17 +11,17 @@
 <body>
     @include('header')
     <h2>Editar Pelea</h2>
-    <div id="formularioPelea">
+    <div id="formulario-Pelea">
 
-        <form id="formEditarPelea" action="{{ route('peleas.update', $pelea->ID_Pelea) }}" method="POST">
+        <form id="form-Editar-Pelea" action="{{ route('peleas.update', $pelea->ID_Pelea) }}" method="POST">
             @csrf
             @method('PUT')
 
-            <label for="nombrePelea">Nombre de la Pelea:</label>
-            <input type="text" id="nombrePelea" name="Nombre_Pel" value="{{ $pelea->Nombre_Pel }}"><br><br>
+            <label for="nombre-Pelea">Nombre de la Pelea:</label>
+            <input type="text" id="nombre-Pelea" name="Nombre_Pel" value="{{ $pelea->Nombre_Pel }}"><br><br>
 
-            <label for="selectCategoria">Categoría:</label>
-            <select id="selectCategoria">
+            <label for="select-Categoria">Categoría:</label>
+            <select id="select-Categoria">
                 <option value="">Selecciona una categoría</option>
                 <option value="1">Peso Mosca</option>
                 <option value="2">Peso Gallo</option>
@@ -35,41 +35,41 @@
                 <option value="10">Peso Flyweight Femenino</option>
             </select><br><br>
 
-            <label for="selectParticipanteAzul">Participante Azul:</label>
-            <select id="selectParticipanteAzul" name="ID_Participante_Azul">
+            <label for="select-Participante-Azul">Participante Azul:</label>
+            <select id="select-Participante-Azul" name="ID_Participante_Azul">
                 @foreach ($participantesAzules as $participante)
                 <option value="{{ $participante->ID_Participante }}" @if ($pelea->ID_Participante_Azul == $participante->ID_Participante) selected @endif>{{ $participante->Nombre_Par }}</option>
                 @endforeach
             </select><br><br>
 
-            <label for="selectParticipanteRojo">Participante Rojo:</label>
-            <select id="selectParticipanteRojo" name="ID_Participante_Rojo">
+            <label for="select-Participante-Rojo">Participante Rojo:</label>
+            <select id="select-Participante-Rojo" name="ID_Participante_Rojo">
                 @foreach ($participantesRojos as $participante)
                 <option value="{{ $participante->ID_Participante }}" @if ($pelea->ID_Participante_Rojo == $participante->ID_Participante) selected @endif>{{ $participante->Nombre_Par }}</option>
                 @endforeach
             </select><br><br>
 
-            <label for="selectJuez">Juez:</label>
-            <select id="selectJuez" name="ID_Juez">
+            <label for="select-Juez">Juez:</label>
+            <select id="select-Juez" name="ID_Juez">
                 @foreach ($jueces as $participante)
                 <option value="{{ $participante->ID_Participante }}" @if ($pelea->ID_Juez == $participante->ID_Participante) selected @endif>{{ $participante->Nombre_Par }}</option>
                 @endforeach
             </select><br><br>
 
-            <label for="selectArbitro">Árbitro:</label>
-            <select id="selectArbitro" name="ID_Arbitro">
+            <label for="select-Arbitro">Árbitro:</label>
+            <select id="select-Arbitro" name="ID_Arbitro">
                 @foreach ($arbitros as $participante)
                 <option value="{{ $participante->ID_Participante }}" @if ($pelea->ID_Arbitro == $participante->ID_Participante) selected @endif>{{ $participante->Nombre_Par }}</option>
                 @endforeach
             </select><br><br>
 
-            <label for="selectVelada">Velada:</label>
-            <select id="selectVelada" name="ID_Velada">
+            <label for="select-Velada">Velada:</label>
+            <select id="select-Velada" name="ID_Velada">
                 @foreach ($veladas as $velada)
                 <option value="{{ $velada->ID_Velada }}" @if ($pelea->ID_Velada == $velada->ID_Velada) selected @endif>{{ $velada->Nombre_Vel }}</option>
                 @endforeach
             </select><br><br>
-            <button type="submit" id="editarPeleaBtn">Editar Pelea</button>
+            <button type="submit" id="editar-Pelea-Btn">Editar Pelea</button>
         </form>
     </div>
     @include('footer')

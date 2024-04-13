@@ -127,7 +127,7 @@ function mostrarPeleasTabla(peleas) {
         tablaHTML += "</tr>";
     });
     tablaHTML += "</table>";
-    document.getElementById("resultadosPelea").innerHTML = tablaHTML;
+    document.getElementById("resultados-Pelea").innerHTML = tablaHTML;
 }
 
 // Función para eliminar una pelea
@@ -152,7 +152,7 @@ function editarPelea(ID_Pelea, event) {
     // Evitar que el formulario se envíe automáticamente
     event.preventDefault();
 
-    var form = document.getElementById("formEditarPelea");
+    var form = document.getElementById("form-Editar-Pelea");
     var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();

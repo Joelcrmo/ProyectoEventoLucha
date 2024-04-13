@@ -16,15 +16,15 @@
 
 <h2>Añadir Pelea</h2>
 
-<div id="formularioPelea">
+<div id="formulario-Pelea">
     <form action="{{ route('peleas/insertar') }}" method="POST">
 
         @csrf
-        <label for="nombrePelea">Nombre de la Pelea:</label>
-        <input type="text" id="nombrePelea" name="Nombre_Pel"><br><br>
+        <label for="nombre-Pelea">Nombre de la Pelea:</label>
+        <input type="text" id="nombre-Pelea" name="Nombre_Pel"><br><br>
 
-        <label for="selectCategoria">Categoría:</label>
-        <select id="selectCategoria">
+        <label for="select-Categoria">Categoría:</label>
+        <select id="select-Categoria">
             <option value="">Selecciona una categoría</option>
             <option value="1">Peso Mosca</option>
             <option value="2">Peso Gallo</option>
@@ -38,45 +38,45 @@
             <option value="10">Peso Flyweight Femenino</option>
         </select><br><br>
 
-        <label for="selectParticipanteAzul">Participante Azul:</label>
-        <select id="selectParticipanteAzul" name="ID_Participante_Azul">
+        <label for="select-Participante-Azul">Participante Azul:</label>
+        <select id="select-Participante-Azul" name="ID_Participante_Azul">
             @foreach ($participantesAzules as $participante)
             <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
 
-        <label for="selectParticipanteRojo">Participante Rojo:</label>
-        <select id="selectParticipanteRojo" name="ID_Participante_Rojo">
+        <label for="select-Participante-Rojo">Participante Rojo:</label>
+        <select id="select-Participante-Rojo" name="ID_Participante_Rojo">
             @foreach ($participantesRojos as $participante)
             <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
 
 
-        <label for="selectJuez">Juez:</label>
-        <select id="selectJuez" name="ID_Juez">
+        <label for="select-Juez">Juez:</label>
+        <select id="select-Juez" name="ID_Juez">
             @foreach ($jueces as $participante)
             <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
 
-        <label for="selectArbitro">Árbitro:</label>
-        <select id="selectArbitro" name="ID_Arbitro">
+        <label for="select-Arbitro">Árbitro:</label>
+        <select id="select-Arbitro" name="ID_Arbitro">
             @foreach ($arbitros as $participante)
             <option value="{{ $participante->ID_Participante }}">{{ $participante->Nombre_Par }}</option>
             @endforeach
         </select><br><br>
 
-        <label for="selectVelada">Velada:</label>
-        <select id="selectVelada" name="ID_Velada">
+        <label for="select-Velada">Velada:</label>
+        <select id="select-Velada" name="ID_Velada">
             <option value="">Selecciona una velada</option>
         </select><br><br>
 
-        <button type="submit" id="agregarPeleaBtn">Agregar Pelea</button>
+        <button type="submit" id="agregar-Pelea-Btn">Agregar Pelea</button>
     </form>
 </div>
 
-<div id="resultadosPelea"></div>
+<div id="resultados-Pelea"></div>
 
 @include('footer')
 

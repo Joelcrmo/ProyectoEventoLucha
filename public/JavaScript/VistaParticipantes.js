@@ -34,7 +34,7 @@ function MostrarLuchadoresTabla(datos) {
             tablaHTML += "</tr>";
         });
         tablaHTML += "</table>";
-        document.getElementById("resultadosParticipante").innerHTML = tablaHTML;
+        document.getElementById("resultados-Participante").innerHTML = tablaHTML;
     } else {
         console.error("La estructura de datos no contiene la clave 'data'");
     }
@@ -54,7 +54,7 @@ function MostrarArbitrosJuecesTabla(datos) {
             tablaHTML += "</tr>";
         });
         tablaHTML += "</table>";
-        document.getElementById("resultadosParticipante").innerHTML = tablaHTML;
+        document.getElementById("resultados-Participante").innerHTML = tablaHTML;
     } else {
         console.error("La estructura de datos no contiene la clave 'data'");
     }
@@ -62,11 +62,11 @@ function MostrarArbitrosJuecesTabla(datos) {
 
 // Filtros por categorias
 function filtrarPorCategoria() {
-    var selectElement = document.getElementById("selectCategoria");
+    var selectElement = document.getElementById("select-Categoria");
     var selectedCategoryId = selectElement.value;
-    var resultadosDiv = document.getElementById("resultadosParticipante");
+    var resultadosDiv = document.getElementById("resultados-Participante");
 
-    document.getElementById("selectTecnica").value = "";
+    document.getElementById("select-Tecnica").value = "";
 
     if (selectedCategoryId === "todos") {
         MostrarLuchadoresTabla(participantes);
@@ -90,10 +90,10 @@ function filtrarPorCategoria() {
 
 // Filtros por arbitros y jueces
 function filtrarArbitrosYJueces() {
-    var resultadosDiv = document.getElementById("resultadosParticipante");
+    var resultadosDiv = document.getElementById("resultados-Participante");
 
-    document.getElementById("selectTecnica").value = "";
-    document.getElementById("selectCategoria").value = "";
+    document.getElementById("select-Tecnica").value = "";
+    document.getElementById("select-Categoria").value = "";
 
     if (participantes && participantes.data) {
         var arbitrosYJueces = participantes.data.filter(function(participante) {
@@ -109,11 +109,11 @@ function filtrarArbitrosYJueces() {
 
 // Filtros por tecnica
 function filtrarPorTecnica() {
-    var selectElement = document.getElementById("selectTecnica");
+    var selectElement = document.getElementById("select-Tecnica");
     var selectedTecnicaId = selectElement.value;
-    var resultadosDiv = document.getElementById("resultadosParticipante");
+    var resultadosDiv = document.getElementById("resultados-Participante");
 
-    document.getElementById("selectCategoria").value = "";
+    document.getElementById("select-Categoria").value = "";
 
     if (selectedTecnicaId === "") {
         MostrarLuchadoresTabla(participantes);

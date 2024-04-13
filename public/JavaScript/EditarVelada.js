@@ -17,16 +17,16 @@ function obtenerDetallesVelada(ID_Velada) {
 
 // Función para mostrar los detalles de la velada en el formulario de edición
 function mostrarDetallesVelada(velada) {
-    document.getElementById("nombreVelada").value = velada.Nombre_Vel;
-    document.getElementById("fechaVelada").value = velada.Fecha_Vel;
-    document.getElementById("selectLocalizacion").value = velada.ID_Localizacion;
+    document.getElementById("nombre-Velada").value = velada.Nombre_Vel;
+    document.getElementById("fecha-Velada").value = velada.Fecha_Vel;
+    document.getElementById("select-Localizacion").value = velada.ID_Localizacion;
 }
 
 // Función para enviar los cambios de la velada al servidor para su edición
 function guardarCambiosVelada(ID_Velada) {
-    var nombreVelada = document.getElementById("nombreVelada").value;
-    var fechaVelada = document.getElementById("fechaVelada").value;
-    var localizacion = document.getElementById("selectLocalizacion").value;
+    var nombreVelada = document.getElementById("nombre-Velada").value;
+    var fechaVelada = document.getElementById("fecha-Velada").value;
+    var localizacion = document.getElementById("select-Localizacion").value;
 
     var data = {
         'Nombre_Vel': nombreVelada,

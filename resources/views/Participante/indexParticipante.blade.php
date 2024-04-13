@@ -13,7 +13,7 @@
     <h2>Atletas</h2>
 
     <h3>Filtros por categoría</h3>
-    <select id="selectCategoria" onchange="filtrarPorCategoria()">
+    <select id="select-Categoria" onchange="filtrarPorCategoria()">
         <option value="">Selecciona una categoría</option>
         <option value="1">Peso Mosca</option>
         <option value="2">Peso Gallo</option>
@@ -29,7 +29,7 @@
     </select>
 
     <h3>Filtros por Técnica</h3>
-    <select id="selectTecnica" onchange="filtrarPorTecnica()">
+    <select id="select-Tecnica" onchange="filtrarPorTecnica()">
         <option value="">Selecciona una técnica</option>
         <option value="1">Brazilian Jiu Jitsu</option>
         <option value="2">Boxeo</option>
@@ -42,7 +42,7 @@
 
     <button onclick="filtrarArbitrosYJueces()">Mostrar Árbitros y Jueces</button>
 
-    <div id="resultadosParticipante"></div>
+    <div id="resultados-Participante"></div>
 </body>
 @include('footer')
 </html>

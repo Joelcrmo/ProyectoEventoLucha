@@ -12,7 +12,7 @@ function MostrarVeladasTabla(veladas) {
         tablaHTML += "</tr>";
     });
     tablaHTML += "</table>";
-    document.getElementById("resultadoVelada").innerHTML = tablaHTML;
+    document.getElementById("resultado-Velada").innerHTML = tablaHTML;
 }
 
 // Función para mostrar las peleas de una velada específica
@@ -37,7 +37,7 @@ function MostrarPeleasVelada(peleas) {
     // Verificar si hay peleas
     if (peleas.length === 0) {
         var VeladaVacia = "<br><span style='color: red;'>No hay Pelea en esta velada</span>";
-        document.getElementById("PeleasVeladas").innerHTML = VeladaVacia;
+        document.getElementById("Peleas-Veladas").innerHTML = VeladaVacia;
         return;
     }
 
@@ -84,7 +84,7 @@ function mostrarPeleasTabla(peleas) {
         tablaHTML += "</tr>";
     });
     tablaHTML += "</table>";
-    document.getElementById("PeleasVeladas").innerHTML = tablaHTML;
+    document.getElementById("Peleas-Veladas").innerHTML = tablaHTML;
 }
 
 

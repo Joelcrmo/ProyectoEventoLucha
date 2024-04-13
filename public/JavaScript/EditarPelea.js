@@ -75,12 +75,12 @@ function editarPelea() {
 
 // Función para enviar los cambios de la pelea al servidor para su edición
 function guardarCambiosPelea(ID_Pelea) {
-    var nombrePelea = document.getElementById("nombrePelea").value;
-    var participanteAzul = document.getElementById("selectParticipanteAzul").value;
-    var participanteRojo = document.getElementById("selectParticipanteRojo").value;
-    var juez = document.getElementById("selectJuez").value;
-    var arbitro = document.getElementById("selectArbitro").value;
-    var velada = document.getElementById("selectVelada").value;
+    var nombrePelea = document.getElementById("nombre-Pelea").value;
+    var participanteAzul = document.getElementById("select-Participante-Azul").value;
+    var participanteRojo = document.getElementById("select-Participante-Rojo").value;
+    var juez = document.getElementById("select-Juez").value;
+    var arbitro = document.getElementById("select-Arbitro").value;
+    var velada = document.getElementById("select-Velada").value;
 
     var data = {
         'Nombre_Pel': nombrePelea,

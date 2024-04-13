@@ -13,7 +13,7 @@
 <body onload="obtenerPelea()">
 
     <h2 id="title">Peleas</h2>
-    <div id="resultadosPelea"></div>
+    <div id="resultados-Pelea"></div>
     <a href="{{ route('peleas/insertar') }}">Insertar pelea</a>
 
 </body>

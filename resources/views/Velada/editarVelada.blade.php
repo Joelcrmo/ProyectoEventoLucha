@@ -13,18 +13,18 @@
 <body>
 <h2>Editar Velada</h2>
 
-<div id="formularioVelada">
+<div id="formulario-Velada">
     <form action="{{ route('velada.update', ['ID_Velada' => $velada->ID_Velada]) }}" method="POST">
         @csrf
         @method('PUT')
-        <label for="nombreVelada">Nombre de la Velada:</label>
-        <input type="text" id="nombreVelada" name="Nombre_Vel" value="{{ $velada->Nombre_Vel }}"><br><br>
+        <label for="nombre-Velada">Nombre de la Velada:</label>
+        <input type="text" id="nombre-Velada" name="Nombre_Vel" value="{{ $velada->Nombre_Vel }}"><br><br>
 
-        <label for="fechaVelada">Fecha de la Velada:</label>
-        <input type="date" id="fechaVelada" name="Fecha_Vel" value="{{ $velada->Fecha_Vel }}"><br><br>
+        <label for="fecha-Velada">Fecha de la Velada:</label>
+        <input type="date" id="fecha-Velada" name="Fecha_Vel" value="{{ $velada->Fecha_Vel }}"><br><br>
 
-        <label for="selectLocalizacion">Localización:</label>
-        <select id="selectLocalizacion" name="ID_Localizacion">
+        <label for="select-Localizacion">Localización:</label>
+        <select id="select-Localizacion" name="ID_Localizacion">
             @foreach ($localizaciones as $localizacion)
                 <option value="{{ $localizacion->ID_Localizacion }}"
                     {{ $localizacion->ID_Localizacion == $velada->ID_Localizacion ? 'selected' : '' }}>

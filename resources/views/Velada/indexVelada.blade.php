@@ -11,9 +11,9 @@
 @include('header')
 <body onload="obtenerVelada()">
     <h2>Velada</h2>
-    <div id="resultadoVelada"></div>
+    <div id="resultado-Velada"></div>
     <a href="{{ route('velada/insertar') }}">Insertar Velada</a>
-    <div id="PeleasVeladas"></div>
+    <div id="Peleas-Veladas"></div>
 </body>
 @include('footer')
 </html>
