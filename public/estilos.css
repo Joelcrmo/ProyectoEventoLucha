@@ -108,14 +108,15 @@ footer {
 footer::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 0; 
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    filter: blur(10px);
-    z-index: -5;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background-color: inherit; /* Color de fondo heredado */
+    filter: blur(10px); /* Desenfoque */
+    z-index: -5; /* Colocado detrás */
 }
+
 
 
 /* Estilos para la foto */
