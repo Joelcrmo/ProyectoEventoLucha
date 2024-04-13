@@ -32,6 +32,7 @@
         <button type="submit" id="agregar-Velada-Btn">Agregar Velada</button>
     </form>
 </div>
+
 <div id="resultadosVelada"></div>
 
 @include('footer')
