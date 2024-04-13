@@ -42,23 +42,28 @@ function MostrarLuchadoresTabla(datos) {
 
 // Mostrar tablas de arbitros y jueces
 function MostrarArbitrosJuecesTabla(datos) {
-    if (datos.hasOwnProperty("data")) {
-        var participantes = datos.data;
-        var tablaHTML = "<table border='1'><tr><th>Nombre</th><th>Apellido</th><th>Rol</th><th>País</th></tr>";
-        participantes.forEach(function(participante) {
-            tablaHTML += "<tr>";
-            tablaHTML += "<td>" + participante.Nombre_Par + "</td>";
-            tablaHTML += "<td>" + participante.Apellido_Par + "</td>";
-            tablaHTML += "<td>" + (participante.rol ? participante.rol.Nombre_Rol : '') + "</td>";
-            tablaHTML += "<td>" + (participante.pais ? participante.pais.Nombre_Pais : '') + "</td>";
-            tablaHTML += "</tr>";
-        });
-        tablaHTML += "</table>";
-        document.getElementById("resultados-Participante").innerHTML = tablaHTML;
-    } else {
-        console.error("La estructura de datos no contiene la clave 'data'");
+    try {
+        if (datos.hasOwnProperty("data")) {
+            var participantes = datos.data;
+            var tablaHTML = "<table border='1'><tr><th>Nombre</th><th>Apellido</th><th>Rol</th><th>País</th></tr>";
+            participantes.forEach(function(participante) {
+                tablaHTML += "<tr>";
+                tablaHTML += "<td>" + participante.Nombre_Par + "</td>";
+                tablaHTML += "<td>" + participante.Apellido_Par + "</td>";
+                tablaHTML += "<td>" + (participante.rol ? participante.rol.Nombre_Rol : '') + "</td>";
+                tablaHTML += "<td>" + (participante.pais ? participante.pais.Nombre_Pais : '') + "</td>";
+                tablaHTML += "</tr>";
+            });
+            tablaHTML += "</table>";
+            document.getElementById("resultados-Participante").innerHTML = tablaHTML;
+        } else {
+            throw new Error("La estructura de datos no contiene la clave 'data'");
+        }
+    } catch (error) {
+        console.error(error.message);
     }
 }
+
 
 // Filtros por categorias
 function filtrarPorCategoria() {

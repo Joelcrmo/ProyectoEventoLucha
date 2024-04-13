@@ -139,7 +139,7 @@ function eliminarPelea(ID_Pelea) {
             if (xhr.status === 200 || xhr.status === 204) {
                 console.log("La pelea con ID " + ID_Pelea + " ha sido eliminada exitosamente.");
                 window.location.href = "/peleas";
-                } else {
+            } else {
                 console.error("Error al eliminar la pelea. Código de estado:", xhr.status);
             }
         }
