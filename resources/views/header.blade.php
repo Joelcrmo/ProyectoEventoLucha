@@ -5,4 +5,4 @@
       <a href="{{ route('velada') }}">Velada</a>
       <a href="{{ route('peleas') }}">Peleas</a>
     </nav>
-  </header>
+</header>

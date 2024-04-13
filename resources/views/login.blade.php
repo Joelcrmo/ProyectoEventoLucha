@@ -12,8 +12,8 @@
 
 <body>
   <h2>Login</h2>
-  <div id="FormularioLogin">
-    <form>
+  <div id="Formulario-Login">
+    <form class="Datos-Login">
       <label for="username" style="color: white">Nombre de usuario:</label><br>
       <input type="text" id="username" name="username"><br>
       <label for="password" style="color: white">Contraseña:</label><br>
