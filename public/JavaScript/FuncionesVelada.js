@@ -94,6 +94,36 @@ function mostrarPeleasTabla(peleas) {
 
 // Función para eliminar una velada
 function eliminarVelada(ID_Velada) {
+    // Primero, verificamos cuántas peleas están asociadas a esta velada
+    var xhrPeleas = new XMLHttpRequest();
+    xhrPeleas.open("GET", "http://127.0.0.1:8000/api/joel/Pelea?ID_Velada=" + ID_Velada, true);
+    xhrPeleas.onreadystatechange = function() {
+        if (xhrPeleas.readyState === XMLHttpRequest.DONE) {
+            if (xhrPeleas.status === 200) {
+                var peleas = JSON.parse(xhrPeleas.responseText);
+                var numPeleas = peleas.length;
+
+                // Luego, si hay peleas asociadas, mostramos el mensaje de alerta
+                if (numPeleas > 0) {
+                    var confirmacion = confirm("¿Está seguro que desea eliminar esta velada? Tiene " + numPeleas + " peleas asociadas a ella.");
+                    if (confirmacion) {
+                        // Si el usuario confirma, procedemos a eliminar la velada
+                        eliminarVeladaConfirmada(ID_Velada);
+                    }
+                } else {
+                    // Si no hay peleas asociadas, simplemente eliminamos la velada
+                    eliminarVeladaConfirmada(ID_Velada);
+                }
+            } else {
+                console.error("Error al obtener las peleas de la velada. Código de estado:", xhrPeleas.status);
+            }
+        }
+    };
+    xhrPeleas.send();
+}
+
+// Función para eliminar una velada confirmada (sin verificar peleas asociadas)
+function eliminarVeladaConfirmada(ID_Velada) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada, true);
     xhr.onreadystatechange = function() {
@@ -107,6 +137,7 @@ function eliminarVelada(ID_Velada) {
     };
     xhr.send();
 }
+
 
 // Función para editar una velada
 function editarVelada(ID_Velada) {
