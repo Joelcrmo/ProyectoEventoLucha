@@ -122,7 +122,7 @@ function eliminarVelada(ID_Velada) {
     xhrPeleas.send();
 }
 
-// Función para eliminar una velada confirmada (sin verificar peleas asociadas)
+// Función para eliminar una velada confirmada (cuando no hay peleas asociadas)
 function eliminarVeladaConfirmada(ID_Velada) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://127.0.0.1:8000/api/joel/Velada/" + ID_Velada, true);
