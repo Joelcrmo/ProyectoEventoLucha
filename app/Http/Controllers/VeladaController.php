@@ -65,52 +65,52 @@ class VeladaController extends Controller
     }
 
     public function update(Request $request, $ID_Velada)
-{
-    // Validar la solicitud
-    $request->validate([
-        'Nombre_Vel' => 'required',
-        'ID_Localizacion' => 'required',
-        'Fecha_Vel' => 'required',
-    ]);
+    {
+        // Validar la solicitud
+        $request->validate([
+            'Nombre_Vel' => 'required',
+            'ID_Localizacion' => 'required',
+            'Fecha_Vel' => 'required',
+        ]);
 
-    // Obtener datos de la solicitud
-    $nombreVel = $request->input('Nombre_Vel');
-    $idLocalizacion = $request->input('ID_Localizacion');
-    $fechaVel = $request->input('Fecha_Vel');
+        // Obtener datos de la solicitud
+        $nombreVel = $request->input('Nombre_Vel');
+        $idLocalizacion = $request->input('ID_Localizacion');
+        $fechaVel = $request->input('Fecha_Vel');
 
-    // Llamada a la función para actualizar la Velada en la base de datos
-    $actualizacionExitosa = $this->veladaDBController->actualizarVeladaEnBD($ID_Velada, $nombreVel, $idLocalizacion, $fechaVel);
+        // Llamada a la función para actualizar la Velada en la base de datos
+        $actualizacionExitosa = $this->veladaDBController->actualizarVeladaEnBD($ID_Velada, $nombreVel, $idLocalizacion, $fechaVel);
 
-    if ($actualizacionExitosa) {
-        return redirect('/velada')->with('success', 'Velada actualizada exitosamente');
-    } else {
-        return redirect('/velada')->with('error', 'Error al actualizar la Velada');
-    }
-}
-
-public function edit($ID_Velada)
-{
-    // Obtener todas las localizaciones
-    $localizaciones = Localizacion::all();
-
-    // Verificar si se encontraron localizaciones
-    if ($localizaciones->isEmpty()) {
-        // Manejar el caso en que no se encontraron localizaciones
-        return response()->json(['error' => 'No se encontraron localizaciones'], 404);
+        if ($actualizacionExitosa) {
+            return redirect('/velada')->with('success', 'Velada actualizada exitosamente');
+        } else {
+            return redirect('/velada')->with('error', 'Error al actualizar la Velada');
+        }
     }
 
-    // Llamada al método edit del VeladaDBController
-    $velada = $this->veladaDBController->edit($ID_Velada);
+    public function edit($ID_Velada)
+    {
+        // Obtener todas las localizaciones
+        $localizaciones = Localizacion::all();
 
-    // Verificar si se encontró la velada
-    if (!$velada) {
-        // Manejar el caso en que no se encontró la velada
-        return response()->json(['error' => 'No se encontró la velada'], 404);
+        // Verificar si se encontraron localizaciones
+        if ($localizaciones->isEmpty()) {
+            // Manejar el caso en que no se encontraron localizaciones
+            return response()->json(['error' => 'No se encontraron localizaciones'], 404);
+        }
+
+        // Llamada al método edit del VeladaDBController
+        $velada = $this->veladaDBController->edit($ID_Velada);
+
+        // Verificar si se encontró la velada
+        if (!$velada) {
+            // Manejar el caso en que no se encontró la velada
+            return response()->json(['error' => 'No se encontró la velada'], 404);
+        }
+
+        // Pasar las localizaciones y la velada a la vista
+        return view('Velada.editarVelada', compact('velada', 'localizaciones'));
     }
-
-    // Pasar las localizaciones y la velada a la vista
-    return view('Velada.editarVelada', compact('velada', 'localizaciones'));
-}
 
 
 
