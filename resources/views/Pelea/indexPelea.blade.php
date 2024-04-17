@@ -13,9 +13,10 @@
 <body onload="obtenerPelea()">
 
     <h2 id="title">Peleas</h2>
+    <div class="button-container">
+        <a href="{{ route('peleas/insertar') }}" class="insert-pelea-button">Insertar pelea</a>
+     </div>
     <div id="resultados-Pelea"></div>
-    <a href="{{ route('peleas/insertar') }}">Insertar pelea</a>
-
 </body>
 @include('footer')
 </html>

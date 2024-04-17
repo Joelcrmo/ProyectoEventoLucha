@@ -11,8 +11,10 @@
 @include('header')
 <body onload="obtenerVelada()">
     <h2>Velada</h2>
-    <div id="resultado-Velada"></div>
-    <a href="{{ route('velada/insertar') }}">Insertar Velada</a>
+    <div class="button-container">
+        <a href="{{ route('velada/insertar') }}" class="insert-velada-button">Insertar Velada</a>
+      </div>
+    <div id="resultado-Velada"></div> <!-- Aquí se mostrará la información de las veladas -->
     <div id="Peleas-Veladas"></div>
 </body>
 @include('footer')

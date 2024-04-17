@@ -140,3 +140,30 @@ function filtrarPorTecnica() {
         }
     }
 }
+
+// Filtro por luchador
+function filtrarPorLuchador(nombreLuchador) {
+    var resultadosDiv = document.getElementById("resultados-Participante");
+
+    if (nombreLuchador.trim() === "") {
+        resultadosDiv.style.display = "none";
+    } else {
+        if (participantes && participantes.data) {
+            var participantesFiltrados = participantes.data.filter(function(participante) {
+                var nombreCompleto = (participante.Nombre_Par + " " + participante.Apellido_Par).toLowerCase();
+                return nombreCompleto.includes(nombreLuchador.toLowerCase());
+            });
+
+            if (participantesFiltrados.length > 0) {
+                MostrarLuchadoresTabla({ "data": participantesFiltrados });
+                resultadosDiv.style.display = "block";
+            } else {
+                resultadosDiv.style.display = "none";
+            }
+        } else {
+            console.error("Error: no se han cargado los datos de los participantes correctamente.");
+        }
+    }
+}
+
+

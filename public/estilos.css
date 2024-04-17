@@ -97,7 +97,7 @@ a:active {
 
 /* Estilos para el footer */
 footer {
-    position: fixed;
+    position: Relative ;
     bottom: 0;
     width: 100%;
     background-color: rgba(5, 46, 180, 0.082);
@@ -108,7 +108,7 @@ footer {
 footer::before {
     content: '';
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 100%; /* Ancho completo */
     height: 100%; /* Altura completa */
@@ -124,3 +124,21 @@ footer::before {
     padding-top: 3%;
     width: 20%;
 }
+
+
+/* Estilos para los boton de añadir */
+.button-container {
+    text-align: right;
+  }
+  .insert-velada-button, .insert-pelea-button {
+    display: inline-block;
+    padding: 5px 20px;
+    margin-right: 20px;
+    background-color: #0015d5;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }

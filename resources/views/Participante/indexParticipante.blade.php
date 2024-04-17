@@ -12,6 +12,10 @@
 <body onload="obtenerDatosParticipantes()">
     <h2>Atletas</h2>
 
+    <h3>Filtro por luchador</h3>
+    <input type="text" id="input-Luchador" oninput="filtrarPorLuchador(this.value)" placeholder="Escribe el nombre del luchador">
+
+
     <h3>Filtros por categoría</h3>
     <select id="select-Categoria" onchange="filtrarPorCategoria()">
         <option value="">Selecciona una categoría</option>
