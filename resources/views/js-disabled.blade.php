@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>JavaScript debe estar activado</h1>
-    <p>Para utilizar esta aplicación, por favor activa JavaScript en tu navegador.</p>
+    <p style="color: red">Para utilizar esta aplicación, por favor activa JavaScript en tu navegador.</p>
+    <img src="img/index.png" alt="Logo_UFC" id="logo_UFC">
 </body>
 </html>

@@ -32,6 +32,6 @@ Route::get('/velada/editar/{ID_Velada}', [VeladaController::class, 'edit'])->nam
 Route::put('/velada/{ID_Velada}', [VeladaController::class, 'update'])->name('velada.update');
 
 // Ruta por si el js se desactiva
-Route::view('/js-disabled', 'js_disabled')->name('js.disabled');
+Route::view('/js-disabled', 'js-disabled')->name('js.disabled');
 
 
