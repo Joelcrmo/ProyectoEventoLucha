@@ -95,6 +95,20 @@ a:active {
     color: rgb(168, 168, 168);
 }
 
+/* Estilos para el login */
+.login-footer{
+    position: fixed ;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(5, 46, 180, 0.082);
+    color: #fff;
+    padding: 10px 0;
+}
+
+.login-body{
+    margin-top: 100px;
+}
+
 /* Estilos para el footer */
 footer {
     position: Relative ;

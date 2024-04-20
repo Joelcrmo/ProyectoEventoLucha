@@ -10,7 +10,7 @@
   <script src="{{ asset('JavaScript/Login.js') }}" defer></script>
 </head>
 
-<body>
+<body class="login-body">
   <h2>Login</h2>
   <div id="FormularioLogin">
     <form>
@@ -23,9 +23,17 @@
   </div>
 </body>
 
-@include('footer')
 
-<footer>
+
+<footer class="login-footer">
+    <div class="container">
+        <p style="color: rgb(255, 255, 255)">&copy; {{ date('Y') }} Joel Acoran Cruz Morales - Proyecto de Final de Ciclo de Desarrollo de Aplicaciones Web</p>
+    </div>
+
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=/js-disabled">
+    </noscript>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Ruta del Script para realizar el login -->
