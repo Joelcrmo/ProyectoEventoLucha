@@ -38,16 +38,33 @@
 @include('footer')
 
 <script>
-    function validarFormulario() {
-        var nombreVelada = document.getElementById("nombre-Velada").value;
-        var fechaVelada = document.getElementById("fecha-Velada").value;
+function validarFormulario() {
+    var nombreVelada = document.getElementById("nombre-Velada").value;
+    var fechaVelada = document.getElementById("fecha-Velada").value;
 
-        if (nombreVelada === "" || fechaVelada === "") {
-            alert("Por favor, complete todos los campos requeridos.");
-            return false; // Evita que se envíe el formulario si los campos están vacíos
-        }
-        return true;
+    // Expresión regular para permitir letras, números y espacios en el nombre
+    var nombreRegex = /^[a-zA-Z0-9\s]+$/;
+
+    if (nombreVelada === "" || fechaVelada === "") {
+        alert("Por favor, complete todos los campos requeridos.");
+        return false;
     }
+
+    // Verificar si el nombre contiene caracteres no permitidos
+    if (!nombreRegex.test(nombreVelada)) {
+        alert("Por favor, ingrese un nombre válido sin caracteres especiales.");
+        return false;
+    }
+
+    // Verificar si el nombre tiene al menos 5 caracteres
+    if (nombreVelada.length < 5) {
+        alert("El nombre de la velada debe tener al menos 5 caracteres.");
+        return false;
+    }
+
+    return true;
+}
+
 </script>
 
 </body>

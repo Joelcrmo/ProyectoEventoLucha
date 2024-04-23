@@ -67,7 +67,7 @@
             <option value="">Selecciona una velada</option>
         </select><br><br>
 
-        <button type="submit" id="agregar-Pelea-Btn">Agregar Pelea</button>
+        <button type="button" id="agregar-Pelea-Btn">Agregar Pelea</button>
     </form>
 </div>
 
@@ -78,28 +78,61 @@
 <script src="{{ asset('JavaScript/InsertarPelea.js') }}"></script>
 <script>
     function validarFormulario() {
+        var nombrePelea = document.getElementById("nombre-Pelea").value;
         var categoria = document.getElementById("select-Categoria").value;
-        if (categoria === "") {
-            alert("Por favor, selecciona una categoría.");
+        var velada = document.getElementById("select-Velada").value;
+        var participanteAzul = document.getElementById("select-Participante-Azul").value;
+        var participanteRojo = document.getElementById("select-Participante-Rojo").value;
+
+        // Expresión regular para permitir letras, números y espacios en el nombre
+        var nombreRegex = /^[a-zA-Z0-9\s]+$/;
+
+
+        if (nombrePelea === "" || categoria === "" || velada === "" || participanteAzul === "" || participanteRojo === "") {
+            alert("Por favor, completa todos los campos requeridos.");
             return false;
         }
+
+        // Verificar si el nombre de la pelea contiene caracteres no permitidos
+        if (!nombreRegex.test(nombrePelea)) {
+            alert("Por favor, ingresa un nombre de pelea válido sin caracteres especiales.");
+            return false;
+        }
+
+        // Verificar si el nombre tiene al menos 5 caracteres
+        if (nombrePelea.length < 5) {
+            alert("El nombre de la pelea debe tener al menos 5 caracteres.");
+            return false;
+        }
+
+        // Verificar si el participante azul es igual al participante rojo
+        if (participanteAzul === participanteRojo) {
+            alert("El participante azul y rojo deben ser diferentes.");
+            return false;
+        }
+
         return true;
     }
+
 </script>
+
 <script>
-    $(document).ready(function() {
-        cargarVeladas();
+$(document).ready(function() {
+    cargarVeladas();
 
-        $('#select-Categoria').change(function() {
-            filtrarParticipantesPorCategoria();
-        });
+    $('#select-Categoria').change(function() {
+        filtrarParticipantesPorCategoria();
+    });
 
-        $('#agregar-Pelea-Btn').click(function() {
+    $('#agregar-Pelea-Btn').click(function() {
+        if (validarFormulario()) {
             $(this).prop('disabled', true);
             agregarPelea();
+            console.log("Pelea agregada correctamente.");
             window.location.href = "/peleas";
-        });
+        }
     });
+});
 </script>
 
 </body>

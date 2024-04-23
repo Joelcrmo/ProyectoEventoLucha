@@ -13,7 +13,7 @@
     <h2>Editar Pelea</h2>
     <div id="formulario-Pelea">
 
-        <form id="form-Editar-Pelea" action="{{ route('peleas.update', $pelea->ID_Pelea) }}" method="POST">
+        <form id="form-Editar-Pelea" action="{{ route('peleas.update', $pelea->ID_Pelea) }}" method="POST" onsubmit="return validarFormulario()">
             @csrf
             @method('PUT')
 
@@ -74,5 +74,43 @@
     </div>
     @include('footer')
     <script src="{{ asset('JavaScript/EditarPelea.js') }}"></script>
+    <script>
+        function validarFormulario() {
+            var nombrePelea = document.getElementById("nombre-Pelea").value;
+            var categoria = document.getElementById("select-Categoria").value;
+            var velada = document.getElementById("select-Velada").value;
+            var participanteAzul = document.getElementById("select-Participante-Azul").value;
+            var participanteRojo = document.getElementById("select-Participante-Rojo").value;
+
+            // Expresión regular para permitir letras, números y espacios en el nombre
+            var nombreRegex = /^[a-zA-Z0-9\s]+$/;
+
+
+            if (nombrePelea === "" || categoria === "" || velada === "" || participanteAzul === "" || participanteRojo === "") {
+                alert("Por favor, completa todos los campos requeridos.");
+                return false;
+            }
+
+            // Verificar si el nombre de la pelea contiene caracteres no permitidos
+            if (!nombreRegex.test(nombrePelea)) {
+                alert("Por favor, ingresa un nombre de pelea válido sin caracteres especiales.");
+                return false;
+            }
+
+            // Verificar si el nombre tiene al menos 5 caracteres
+            if (nombrePelea.length < 5) {
+                alert("El nombre de la pelea debe tener al menos 5 caracteres.");
+                return false;
+            }
+
+            // Verificar si el participante azul es igual al participante rojo
+            if (participanteAzul === participanteRojo) {
+                alert("El participante azul y rojo deben ser diferentes.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>

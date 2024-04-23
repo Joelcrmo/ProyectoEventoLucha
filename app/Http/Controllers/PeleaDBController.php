@@ -28,6 +28,16 @@ class PeleaDBController extends Controller
 
     public function crearPelea(Request $request)
     {
+        // Validar los datos de entrada
+        $request->validate([
+            'Nombre_Pel' => 'required|string|min:5',
+            'ID_Participante_Azul' => 'required|numeric',
+            'ID_Participante_Rojo' => 'required|numeric|different:ID_Participante_Azul',
+            'ID_Juez' => 'required|numeric',
+            'ID_Arbitro' => 'required|numeric',
+            'ID_Velada' => 'required|numeric',
+        ]);
+
         // Crear una nueva Pelea en la base de datos
         $nombrePel = $request->input('Nombre_Pel');
         $idParticipanteAzul = $request->input('ID_Participante_Azul');
@@ -52,6 +62,16 @@ class PeleaDBController extends Controller
 
     public function actualizarPelea(Request $request, $ID_Pelea)
     {
+        // Validar los datos de entrada
+        $request->validate([
+            'Nombre_Pel' => 'required|string|min:5',
+            'ID_Participante_Azul' => 'required|numeric',
+            'ID_Participante_Rojo' => 'required|numeric',
+            'ID_Juez' => 'required|numeric',
+            'ID_Arbitro' => 'required|numeric',
+            'ID_Velada' => 'required|numeric',
+        ]);
+
         // Actualizar la Pelea en la base de datos
         $nombrePel = $request->input('Nombre_Pel');
         $idParticipanteAzul = $request->input('ID_Participante_Azul');
@@ -91,6 +111,4 @@ class PeleaDBController extends Controller
 
         return response()->json($peleas);
     }
-
-
 }
