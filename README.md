@@ -1,66 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Documentación proyecto UFC
+## Joel Acoran Cruz Morales
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## Proyecto UFC
+Documento para el proyecto final de 2do curso del Ciclo Formativo de Grado Superior en Diseño de Aplicaciones Web de Joel Acoran Cruz Morales.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Índice
+1. [Descripción del proyecto](#descripción-del-proyecto)
+   - [Descripción](#descripción)
+   - [Características principales](#características-principales)
+2. [Desarrollo del proyecto](#desarrollo-del-proyecto)
+   - [Definición de requisitos](#definición-de-requisitos)
+   - [Análisis y diseño](#análisis-y-diseño)
+   - [Implementación](#implementación)
+   - [Pruebas](#pruebas)
+   - [Despliegue](#despliegue)
+3. [Tecnologías empleadas](#tecnologías-empleadas)
+4. [Integración y coste empresarial](#integración-y-coste-empresarial)
+   - [Aportación y beneficios a la empresa](#aportación-y-beneficios-a-la-empresa)
+   - [Costes hardware y software](#costes-hardware-y-software)
+   - [Elección de precios, hosting, licencias, etc](#elección-de-precios-hosting-licencias-etc)
+5. [Bibliografía](#bibliografía)
+6. [Anexos](#anexos)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Descripción del proyecto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Descripción
+El proyecto consiste en una aplicación web interactiva centrada en la empresa UFC (Ultimate Fighting Championships). Permitirá a los usuarios explorar información detallada de cada participante, además de crear y gestionar eventos y peleas asociadas a ellos. La aplicación se integrará con una API pública para sincronizar y mantener actualizada la información en tiempo real.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Características principales
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Login**: Los usuarios contarán con un sistema de autenticación para acceder a las funciones.
+- **Exploración de participantes**: Búsqueda y visualización detallada de información de cada participante.
+- **Creación y gestión de veladas**: Los usuarios podrán crear, editar y eliminar eventos, especificando nombre, fecha y ubicación.
+- **Creación y gestión de peleas**: Los usuarios podrán crear y asignar peleas a eventos, seleccionando participantes, jueces y árbitros.
+- **Integración de la API**: La aplicación estará integrada con una API para obtener datos actualizados de participantes.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Desarrollo del proyecto
 
-### Premium Partners
+### Definición de requisitos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Requisitos funcionales
 
-## Contributing
+- Autenticación y autorización.
+- Exploración de participantes.
+- Creación y gestión de eventos.
+- Creación y gestión de peleas.
+- Integración con la API.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Requisitos no funcionales
 
-## Code of Conduct
+- Seguridad.
+- Escalabilidad.
+- Usabilidad.
+- Rendimiento.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Análisis y diseño
 
-## Security Vulnerabilities
+Se realizó un análisis detallado de requisitos funcionales y se diseñó el sistema utilizando un esquema de entidad-relación y un modelo UML para comprender la estructura del proyecto.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Esquema entidad-relación
 
-## License
+- Relaciones entre entidades como Participante, Categoría, Pelea, Localización, etc.
+  
+#### Modelo UML
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Representación de clases y comportamiento del sistema.
+
+### Implementación
+
+Transformación del diseño en código utilizando el framework Laravel para el desarrollo de la aplicación web.
+
+### Pruebas
+
+- Pruebas de funcionalidad mediante Postman y validaciones en las vistas.
+
+### Despliegue
+
+Configuración de entorno de desarrollo con XAMPP, Apache y Laravel, además de consideraciones sobre hosting y licencias.
+
+---
+
+## Tecnologías empleadas
+
+- HTML, CSS, JavaScript (AJAX)
+- PHP (Laravel)
+
+---
+
+## Integración y coste empresarial
+
+### Aportación y beneficios a la empresa
+
+- Mejora de la eficiencia en la gestión de eventos.
+- Generación de nuevas fuentes de ingresos.
+- Mejora de la imagen de marca.
+
+### Costes hardware y software
+
+- Hardware: PC de gama media y servidores.
+- Software: Licencias de sistema operativo y herramientas de desarrollo.
+
+### Elección de precios, hosting, licencias, etc
+
+- Hosting: Servicio en la nube (AWS).
+- Licencias: Costos adicionales para herramientas y software.
+
+---
+
+## Bibliografía
+
+- Referencias a servicios y productos utilizados.
+
+---
+
+## Anexos
+
+- Documentos adicionales y enlaces de interés.
+
+GitHub del proyecto: [Proyecto UFC](https://github.com/Joelcrmo/ProyectoUFC)
+
