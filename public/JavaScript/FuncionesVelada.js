@@ -130,6 +130,7 @@ function eliminarVeladaConfirmada(ID_Velada) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 obtenerVelada();
+                location.reload();
             } else {
                 console.error("Error al eliminar la velada. Código de estado:", xhr.status);
             }
